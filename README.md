@@ -29,6 +29,8 @@ compose.yaml        # 三服务部署配置
 
 请求流向：浏览器 → frontend → backend:3000 → db:3306。
 
+GitHub `master` 自动同步到 CodeArts 的配置与操作见 [同步说明](docs/codearts-sync.md)。首次使用需配置 GitHub Actions Secret。
+
 ## 启动框架
 
 需要 Git、已启动的 Docker Engine 和 Docker Compose。依赖安装与构建在镜像内完成。
