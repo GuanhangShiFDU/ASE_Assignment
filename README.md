@@ -58,6 +58,8 @@ MySQL 初始化脚本仅在数据目录为空时自动执行；修改 `.env` 不
 本地前端开发建议使用 Node.js 24。启动 Compose 后，可在 `frontend/` 执行 `npm ci` 和 `npm run dev`。
 开发代理默认连接 `http://127.0.0.1:3000`，修改后端宿主机端口时同步设置 `BACKEND_URL`。
 
+后端依赖安装、代码职责、环境变量和隔离验证步骤见 [Backend Onboarding](docs/backend-onboarding.md)。
+
 ## 接口约定
 
 | 方法 | 路径 | 状态 |
