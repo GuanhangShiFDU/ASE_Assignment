@@ -1,4 +1,5 @@
 import express from 'express';
+import { registerCounterMutationRoutes } from './counter-mutation.js';
 
 export function createApp(database) {
   const app = express();
@@ -18,7 +19,9 @@ export function createApp(database) {
     }
   });
 
-  // TODO: Implement counter read / increment / decrement routes in a later commit.
+  registerCounterMutationRoutes(app, database);
+
+  // TODO: Implement the counter read route in the query API card.
 
   app.use((_req, res) => {
     res.status(404).json({ error: 'Not found' });
