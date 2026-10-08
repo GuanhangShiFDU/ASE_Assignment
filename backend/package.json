@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "node --watch src/server.js",
     "start": "node src/server.js",
-    "check": "node --check src/server.js && node --check src/app.js && node --check src/db.js && node --check src/counter-mutation.js",
+    "check": "node --check src/server.js && node --check src/app.js && node --check src/db.js && node --check src/counter-mutation.js && node --check src/counter-query.js",
     "test:mutation": "node --test test/counter-mutation.test.js"
   },
   "dependencies": {
