@@ -1,5 +1,6 @@
 import express from 'express';
 import { registerCounterMutationRoutes } from './counter-mutation.js';
+import { registerCounterQueryRoute } from './counter-query.js';
 
 export function createApp(database) {
   const app = express();
@@ -21,7 +22,7 @@ export function createApp(database) {
 
   registerCounterMutationRoutes(app, database);
 
-  // TODO: Implement the counter read route in the query API card.
+  registerCounterQueryRoute(app, database);
 
   app.use((_req, res) => {
     res.status(404).json({ error: 'Not found' });
