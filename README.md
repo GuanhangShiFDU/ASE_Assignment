@@ -6,10 +6,9 @@
 
 ## 当前状态
 
-目前为初始框架，包含 React 首页、后端健康检查、MySQL 初始化和容器部署配置。
-**计数显示、加减交互及三个计数业务接口尚未实现，完整验收待后续完成。**
+计数页面、查询与加减接口已实现，使用 MySQL 保存共享计数，支持负数、刷新和跨浏览器读取。开发自测覆盖接口、页面交互及错误状态；最终课程验收仍以测试同学从 CodeArts 指定版本执行并记录的结果为准。
 
-框架开发自检已通过：前端构建、后端语法检查、Compose 配置及镜像构建、三容器启动、数据库初始化、健康接口正常与异常响应。这些自检不替代后续测试人员的独立验证和完整作业验收。
+接口和开发自测见 [查询 API](docs/counter-query.md)、[加减 API](docs/counter-mutation.md)、[Counter UI](docs/counter-ui.md)。验收步骤及结果入口见 [验收记录](docs/validation.md)。
 
 ## 技术栈与目录
 
@@ -31,7 +30,7 @@ compose.yaml        # 三服务部署配置
 
 GitHub `master` 自动同步到 CodeArts 的配置与操作见 [同步说明](docs/codearts-sync.md)。首次使用需配置 GitHub Actions Secret。
 
-## 启动框架
+## 启动应用
 
 需要 Git、已启动的 Docker Engine 和 Docker Compose。依赖安装与构建在镜像内完成。
 
@@ -43,7 +42,7 @@ docker compose up -d --build
 docker compose ps -a
 ```
 
-默认访问 <http://localhost:8080>，页面显示项目说明及服务连接状态。
+默认访问 <http://localhost:8080>，页面读取数据库计数，点击加一或减一后显示后端保存的结果。
 `.env.example` 包含前后端端口、数据库名称、应用账号及密码、root 密码；实际 `.env` 不提交 Git。
 
 ```bash
@@ -65,12 +64,12 @@ MySQL 初始化脚本仅在数据目录为空时自动执行；修改 `.env` 不
 | 方法 | 路径 | 状态 |
 | --- | --- | --- |
 | GET | `/api/health` | 已实现；数据库正常返回 200，不可用返回 503 |
-| GET | `/api/counter` | 待实现：读取当前计数 |
-| POST | `/api/counter/increment` | 待实现：加一并返回结果 |
-| POST | `/api/counter/decrement` | 待实现：减一并返回结果 |
+| GET | `/api/counter` | 已实现：读取当前计数 |
+| POST | `/api/counter/increment` | 已实现：加一并返回结果 |
+| POST | `/api/counter/decrement` | 已实现：减一并返回结果 |
 
 计数接口成功响应约定为 `{"value": 整数}`，读取数据库中 `counter(id, value)` 的 `id=1` 记录。
-未实现的接口目前返回 404。具体错误响应和接口测试由开发成员在实现时补充。
+数据库读取/写入失败返回 503；记录缺失返回 503；加减超出 INT 范围返回 409。响应包含 error 字段，具体错误码见接口文档。请求失败后重新读取，不自动重发 POST。
 
 ## 人员分工
 
@@ -81,3 +80,24 @@ MySQL 初始化脚本仅在数据目录为空时自动执行；修改 `.env` 不
 | 刘子扬 | 26113050091 | 后端工程师 | 后端环境接入、计数业务接口、数据库访问及相关测试与文档 |
 | 李全昊 | 26113050071 | 后端工程师 | 后端环境接入、计数业务接口、数据库访问及相关测试与文档 |
 | 杨润东 | 26213050435 | 测试工程师 | 测试用例设计、功能与持久化验收、缺陷跟踪及验收文档更新 |
+
+## 数据库与数据卷
+
+`counter(id TINYINT UNSIGNED PRIMARY KEY, value INT NOT NULL)` 仅保存 `id=1` 一条记录，初值 0。初始化脚本可重复执行，不覆盖已有值。
+
+查询真实数据：
+
+```bash
+docker compose exec -T db sh -c 'MYSQL_PWD="$MYSQL_PASSWORD" exec mysql --protocol=TCP -h 127.0.0.1 -u"$MYSQL_USER" "$MYSQL_DATABASE" --batch -e "SELECT id, value FROM counter ORDER BY id;"'
+```
+
+逻辑命名卷为 `mysql_data`，实际名称通常为 `<Compose项目名>_mysql_data`，挂载到 MySQL 的 `/var/lib/mysql`。`docker compose restart` 重启服务；`docker compose down` 删除容器但保留卷，随后 `docker compose up -d --build` 可重建并继续使用原数据。验收保持目录、项目名和卷配置一致，不能使用 `down -v`。
+
+## 常见问题
+
+- 端口占用：修改 `.env` 的 FRONTEND_PORT/BACKEND_PORT 后重新启动，访问对应前端端口。
+- 数据库未就绪：查看 `docker compose ps -a` 和 `docker compose logs db backend`，等待健康检查通过；修改 `.env` 密码不会改变已有卷内账号。
+- 镜像拉取失败：检查 Docker 网络和镜像仓库访问，重试构建；不要换成未标版本镜像来掩盖问题。
+- 页面报错：查看 `/api/counter` 返回值与 backend/db 状态。失败时页面不会把默认 0 或本地计算结果当成数据库结果；恢复服务后点“重新读取”。
+
+历史 onboarding 的首页三种健康状态截图针对最初框架。现在验证计数页面请使用 `node frontend/onboarding/verify-counter.mjs`；先按 Counter UI 文档安装验证工具及 Chromium。
