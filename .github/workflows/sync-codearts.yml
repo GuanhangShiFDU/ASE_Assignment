@@ -30,7 +30,7 @@ jobs:
         shell: bash
         env:
           CODEARTS_SSH_PRIVATE_KEY: ${{ secrets.CODEARTS_SSH_PRIVATE_KEY }}
-          CODEARTS_REPOSITORY: git@codehub.devcloud.cn-north-4.huaweicloud.com:c1aa0a224dba4c2591226b87a5af9407/ASE_Assignment.git
+          CODEARTS_REPOSITORY: git@codehub.devcloud.cn-north-4.huaweicloud.com:c1aa0a224dba4c2591226b87a5af9407/lab1-counter.git
         run: |
           set -euo pipefail
           if [[ -z "$CODEARTS_SSH_PRIVATE_KEY" ]]; then
