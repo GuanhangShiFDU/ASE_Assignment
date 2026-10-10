@@ -1,0 +1,42 @@
+来源：史冠航于 2026-10-10 在对话中粘贴的实际终端输出；由 Codex 摘录整理，不是 Codex 代为运行。
+复核目录：~/lab1-counter-review
+复核版本：fb6c48085b1d9f2d25592343309f28de0e21c520
+
+准备：已将原项目本地 .env 复制到复核目录，再用文本编辑器编辑；不收录密码或 .env 内容。
+
+执行：
+sw_vers
+docker compose config -q &&
+docker compose up -d --build &&
+docker compose ps -a
+
+实际系统输出：
+ProductName: macOS
+ProductVersion: 26.6.2
+BuildVersion: 25G83
+
+构建输出摘录：
+[+] Building 5.6s (5/5) FINISHED
+=> [frontend internal] load metadata for docker.io/library/nginx:1.28-alpine 0.1s
+=> ERROR [backend internal] load metadata for docker.io/library/node:24-alpine 5.2s
+Image lab1-gshi-review-20261010-frontend Building
+Image lab1-gshi-review-20261010-backend Building
+Dockerfile:1
+1 | >>> FROM node:24-alpine
+target backend: failed to solve: node:24-alpine: failed to resolve source metadata for docker.io/library/node:24-alpine: failed to do request: Head "https://registry-1.docker.io/v2/library/node/manifests/24-alpine": EOF
+
+结论：
+- config -q 无错误并继续执行构建，Compose 配置校验通过。
+- 构建在基础镜像元数据请求阶段失败，尚未运行应用。
+- ps -a 因 && 前置命令失败而未执行。
+- 不据此判定功能或持久化测试失败；这些项目本次尚未执行。
+
+后续排查（Codex 在同一台 Mac 执行，区别于以上史冠航提供的回执）：
+单独执行 docker pull node:24-alpine，首次复现相同 EOF。
+再次执行同一命令，退出码 0，实际输出：
+24-alpine: Pulling from library/node
+Digest: sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1
+Status: Downloaded newer image for node:24-alpine
+docker.io/library/node:24-alpine
+
+未修改代理、Dockerfile 或密码；待史冠航重新执行 Compose 构建和启动。

@@ -1,0 +1,36 @@
+来源：史冠航于 2026-10-10 在对话中粘贴的实际终端输出，由 Codex 摘录整理；不是 Codex 代为运行。
+复核目录：~/lab1-counter-review
+被测版本：fb6c48085b1d9f2d25592343309f28de0e21c520
+
+执行命令：
+cd "$HOME/lab1-counter-review" &&
+docker compose -p lab1-gshi-review-20261010 down &&
+docker volume inspect lab1-gshi-review-20261010_mysql_data --format '{{.Name}} {{.CreatedAt}}' &&
+docker compose -p lab1-gshi-review-20261010 up -d --build --wait --wait-timeout 120 &&
+docker compose -p lab1-gshi-review-20261010 ps -a
+
+实际输出摘录（省略构建详细层日志，整理列宽与动态符号）：
+[+] down 4/4
+Container lab1-gshi-review-20261010-backend-1  Removed 0.3s
+Container lab1-gshi-review-20261010-frontend-1 Removed 0.3s
+Container lab1-gshi-review-20261010-db-1       Removed 1.2s
+Network lab1-gshi-review-20261010_default     Removed 0.2s
+lab1-gshi-review-20261010_mysql_data 2026-10-10T08:20:16Z
+[+] Building 0.6s (25/25) FINISHED
+构建使用 node:24-alpine、nginx:1.28-alpine；npm ci 和前端 npm run build 对应步骤均命中构建缓存。
+[+] up 6/6
+Image lab1-gshi-review-20261010-frontend       Built 0.6s
+Image lab1-gshi-review-20261010-backend        Built 0.6s
+Network lab1-gshi-review-20261010_default      Created 0.0s
+Container lab1-gshi-review-20261010-db-1       Healthy 11.9s
+Container lab1-gshi-review-20261010-backend-1  Healthy 11.9s
+Container lab1-gshi-review-20261010-frontend-1 Healthy 11.9s
+
+NAME | IMAGE | SERVICE | CREATED | STATUS | PORTS
+lab1-gshi-review-20261010-backend-1 | lab1-gshi-review-20261010-backend | backend | 12 seconds ago | Up 6 seconds (healthy) | 127.0.0.1:13000->3000/tcp
+lab1-gshi-review-20261010-db-1 | mysql:8.4 | db | 12 seconds ago | Up 11 seconds (healthy) | 3306/tcp, 33060/tcp
+lab1-gshi-review-20261010-frontend-1 | lab1-gshi-review-20261010-frontend | frontend | 12 seconds ago | Up Less than a second | 127.0.0.1:18082->80/tcp
+
+按新开无痕窗口访问的步骤，用户回传 16-after-rebuild-seven.png，地址为 localhost:18082，显示 7 和“已与数据库同步”。
+结论：down 未带 -v，三个容器与网络已移除；原命名卷仍存在，创建时间不变；重新构建并启动后无痕页面读取到 7。
+重建后减一及刷新验证尚待执行。
