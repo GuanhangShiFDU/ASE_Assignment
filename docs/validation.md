@@ -1,6 +1,6 @@
 # Lab 1 测试与验收记录
 
-> 杨润东已完成一次 CodeArts 指定版本验收；2026-10-10 又在史冠航本机由 Codex 复测最新合并版本，16 项自动化覆盖项通过。ENV-01 权限证据及组员本人复核待补。历史运行保留于文末及证据目录。
+> 杨润东已完成 CodeArts 指定版本验收；Codex 在 `ba87cf5` 完成 16 项自动化复测。2026-10-10，CodeArts 项目、成员及权限配置证据补齐，史冠航在 `fb6c480` 完成另一位组员的 README 人工复核，主流程 0 → 2 → -1 → 0 → 7 → 6 通过。ENV-01 的人工待补项已完成；各轮真实版本、执行人和原始报告分别保留，最终交付版本仍待收尾材料合并后冻结。
 
 依据：[课程 Lab 1 要求](https://openmsg.yuque.com/openmsg/gp3cfs/srlobx960pg94ozp)。QA 用例最初编写于 `7f8d1f9d1e5cddfce3c9d37c4b372a5f959ec7b2`。本张验收卡须在查询 API、Counter UI 和加减 API 全部合并并同步到 CodeArts 后执行。接口成功格式参考根 README，具体错误码以团队确认后的约定为准。
 
@@ -13,15 +13,15 @@
 | 操作系统、版本、CPU 架构 | darwin 25.6.0 arm64 |
 | Git、Docker 客户端与服务端、Compose 版本 | Git 2.50.1 (Apple Git-155); Docker 29.4.3 / 29.4.3; Compose 5.1.4 |
 | 浏览器 A / B、版本（或 B 为独立无痕会话） | Chromium 153.0.8010.12，独立无痕上下文 |
-| CodeArts 项目名称与链接 | 待核验：按课程要求核对命名，不以截图简称代替 |
-| CodeArts 仓库链接 | SSH：`git@codehub.devcloud.cn-north-4.huaweicloud.com:c1aa0a224dba4c2591226b87a5af9407/lab1-counter.git`；网页链接待从仓库首页复制 |
+| CodeArts 项目名称与链接 | [2026高级软件工程_第22小组](https://devcloud.cn-north-4.huaweicloud.com/projectman/scrum/c1aa0a224dba4c2591226b87a5af9407/workitem/backlog)；2026-10-10 用户补充截图已核实 |
+| CodeArts 仓库链接 | SSH：`git@codehub.devcloud.cn-north-4.huaweicloud.com:c1aa0a224dba4c2591226b87a5af9407/lab1-counter.git`；[仓库网页](https://devcloud.cn-north-4.huaweicloud.com/codehub/project/c1aa0a224dba4c2591226b87a5af9407/codehub/3095685/home?ref=master) |
 | 验收来源分支 / 完整 Commit SHA | CodeArts master 来源，检出 ba87cf52eb50c6cf429bdf1013e1c2873f81f972 |
 | GitHub 与 CodeArts 版本一致性 | 2026-10-10 检查时两个 master 均为 `ba87cf52eb50c6cf429bdf1013e1c2873f81f972` |
 | 本地工作区是否干净 | 被测 CodeArts checkout 在执行前后均干净；证据保存在另一目录 |
 | Compose 项目名、访问 URL、端口 | ase-counter-eab851738aa1; http://127.0.0.1:55721（本轮临时端口） |
 | 数据卷实际名称、挂载路径、镜像版本 | ase-counter-eab851738aa1_mysql_data; /var/lib/mysql; mysql:8.4，详见容器记录 |
 | 是否首次部署 / 数据卷是否全新 | 随机独立项目使用新卷；主流程未删除卷或手工恢复计数 |
-| 网络、资源或权限限制 | SSH 克隆、镜像构建与本轮测试成功；CodeArts 网页需登录，未核验成员/助教权限 |
+| 网络、资源或权限限制 | SSH 克隆、镜像构建与本轮测试成功；运行时未登录网页，后由用户截图补齐成员及仓库权限配置证据，详见文末 |
 
 可运行 `bash scripts/qa/capture-environment.sh` 采集本机信息，输出到忽略 Git 的 `docs/qa/local-evidence/`。采集脚本只读，不启动应用、不运行计数用例、不把测试标为通过。浏览器版本、CodeArts 权限和数据卷挂载等需实际操作时另行记录。
 
@@ -115,10 +115,10 @@ curl -i "$QA_URL/api/counter"
 - **前置条件**：小组已提供 CodeArts 项目/仓库地址、助教账号及本轮分支和完整 SHA；准备未部署过本项目的环境。
 - **操作步骤**：核对项目名称、五位成员和联系助教的加入及仓库权限证据；实际从 CodeArts clone 指定版本，记录完整 SHA 和工作区状态；核对与 GitHub 交付版本一致。
 - **预期结果**：成员及助教能访问指定仓库；克隆成功，SHA 与交付记录一致，工作区干净。项目名称符合课程要求。
-- **状态**：待人工核验
-- **实际结果**：Source=git@codehub.devcloud.cn-north-4.huaweicloud.com:c1aa0a224dba4c2591226b87a5af9407/lab1-counter.git; SHA=ba87cf52eb50c6cf429bdf1013e1c2873f81f972; clean=true. 项目命名、五位成员、助教权限与另一位组员复核仍需真实截图/确认。
-- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；摘要和命令记录证明来源及版本；项目/成员/助教权限截图仍待补充。
-- **缺陷/阻塞与复测**：成员/助教权限证据和另一位组员复核待补。
+- **状态**：通过（2026-10-10 人工材料补齐后确认；原始自动化摘要保留当时的待人工核验状态）
+- **实际结果**：Source=git@codehub.devcloud.cn-north-4.huaweicloud.com:c1aa0a224dba4c2591226b87a5af9407/lab1-counter.git; SHA=ba87cf52eb50c6cf429bdf1013e1c2873f81f972; clean=true. 用户于 2026-10-10 补充项目及仓库截图，已核实项目全名和 lab1-counter 仓库（ID 3095685）。五位组员及助教李展发已加入项目和仓库，仓库状态均为“使用中”，助教角色为“浏览者”。仓库权限矩阵已确认“浏览者”允许下载、不允许提交，且未启用“使用项目权限配置”。项目、成员和下载权限配置证据齐备；史冠航于同日从 CodeArts 克隆 `fb6c48085b1d9f2d25592343309f28de0e21c520` 并完成 README 功能与持久化人工复核，详见 [复核记录](qa/reproduction-review.md)。未记录助教本人克隆结果。
+- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；摘要和命令记录证明来源及版本；[项目名称截图](images/codearts/project-20261010.png)、[仓库页面截图](images/codearts/repository-20261010.png) 已补；[仓库成员与角色](images/codearts/repository-members-page1-20261010.png)、[项目组员](images/codearts/project-members-team-20261010.png)、[项目助教](images/codearts/project-members-ta-20261010.png) 已补；[组员角色权限矩阵](images/codearts/repository-code-permissions-page1-20261010.png)、[浏览者下载权限](images/codearts/repository-code-permissions-viewer-20261010.png) 已补；[另一位组员完整复核记录](qa/reproduction-review.md)、[本人 CodeArts 克隆回执](evidence/manual-review-gshi-20261010/01-environment.txt) 和 [最终 SQL 6](evidence/manual-review-gshi-20261010/20-database-final-six.txt) 已补。
+- **缺陷/阻塞与复测**：项目、成员及仓库下载权限配置证据和另一位组员 README 复核均已完成。史冠航复核时的镜像网络与端口占用问题已解决，处理过程保留于复核记录；本项无剩余人工阻塞。
 
 ### ENV-02：源码构建及三容器部署
 
@@ -280,17 +280,20 @@ curl -i "$QA_URL/api/counter"
 - **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；同目录下 C-01 开头的 SQL/截图/容器记录。
 - **缺陷/阻塞与复测**：本次执行未发现该用例失败；版本变更后须重新验证。
 
-## 5. 本轮统计与结论
+## 5. 自动化结果与人工补充结论
 
 | 项目 | 当前值 |
 | --- | --- |
 | 用例总数 | 17（其中 C-01 为团队补充检查） |
-| 未执行 | 0（另有待人工核验 1 项） |
-| 通过 / 失败 / 阻塞 | 16 / 0 / 0；待人工核验 1 |
-| 当前验收结论 | 自动化覆盖项通过，人工证据与复核待完成 |
-| 未解决缺陷与阻塞 | ENV-01 权限证据、另一位组员复核待补 |
-| 执行人 / 复核人 / 日期 | 自动化复测：Codex（史冠航本机），2026-10-10；组员本人独立复核待完成 |
-| 最终 CodeArts 分支和完整 SHA | 本轮实际被测为 master 的 `ba87cf52eb50c6cf429bdf1013e1c2873f81f972`；最终交付 SHA 待收尾合并后冻结，见 [提交核对表](submission.md) |
+| 原始自动化摘要 | 16 项通过，ENV-01 当时待人工核验；原始 JSON 不回写 |
+| 未执行 / 当前待人工核验 | 0 / 0 |
+| 汇总通过 / 失败 / 阻塞 | 17 / 0 / 0（16 项自动化结果，加 ENV-01 的实际人工补充；不是声称自动运行了 17 项） |
+| 当前验收结论 | 自动化覆盖项通过，CodeArts 人工配置证据已齐；史冠航的 README 功能与持久化人工复核通过 |
+| 未解决缺陷与阻塞 | 本轮未发现未解决功能问题；网络与端口占用已解决。剩余为收尾证据 PR、CodeArts 同步及最终提交 |
+| 执行人 / 复核人 / 日期 | 主验收：杨润东；自动化复测：Codex（史冠航本机）；README 人工复核：史冠航 26113050105，2026-10-10，协助操作单独注明 |
+| 实际被测版本 / 最终交付 | 自动化复测：`ba87cf52eb50c6cf429bdf1013e1c2873f81f972`；人工复核：CodeArts master 的 `fb6c48085b1d9f2d25592343309f28de0e21c520`。最终交付 SHA 待收尾合并后冻结，见 [提交核对表](submission.md) |
+
+本次人工复核补齐了主流程和人工确认项，未重新执行故障注入、初始化幂等性或并发测试；相关结果沿用其真实版本的自动化证据。Git 对照确认 `ba87cf5` 到 `fb6c480` 仅 README、文档及证据变化，应用代码和部署配置未变。
 
 每轮执行后据实际状态更新统计。ENV、F、P、E、R 必须按约定完成；持久化结论必须包含删除容器后重建的 P-03/P-04/P-05，不能仅靠 restart。修复后记录新版本复测结果；代码版本改变时明确哪些用例已重跑、哪些尚未覆盖。
 
@@ -305,7 +308,7 @@ curl -i "$QA_URL/api/counter"
 - 运行方式、CodeArts 来源限制、证据和人工核验见 [执行说明](integration-acceptance.md)。
 - 另一位组员按 README 复现后填写 [独立复现记录](qa/reproduction-review.md)。
 - 只有成功的正式 CodeArts 运行可由 `scripts/acceptance/record.mjs` 导入；本地预演不覆盖本文件正式状态。
-- 关闭卡片前仍需补齐项目/成员/助教权限证据、执行人与独立复核人，以及真实被测 SHA。
+- 项目/成员/助教权限配置证据与史冠航本人 README 复核均已在文末补齐。收尾材料合并并同步后，在卡片补充 PR、实际被测 SHA、复核人及证据位置，再按团队流程结束验收卡。
 
 ## 8. 准备阶段本地联调预演（非正式 CodeArts 验收）
 
@@ -345,7 +348,7 @@ curl -i "$QA_URL/api/counter"
 - 证据：[summary.json](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[events.json](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)。
 - 主流程 0 → 2 → -1 → 0 → 7 → 6 已完成。之后另起补充并发轮次从 6 到 16，不影响已记录的主流程结果。
 - 原卷保留：`ase-counter-d78e392bf6c9_mysql_data`；容器已停止并移除。
-- 人工待补：执行人、项目/仓库网页链接、成员及助教权限截图、另一位组员姓名/日期/README 复现确认。
+- 当时的人工待补项：执行人、项目/仓库网页链接、成员及助教权限截图、另一位组员姓名/日期/README 复现确认。现已由上方执行人说明和下文人工材料补齐，原始摘要保持不变。
 
 ## CodeArts 实际执行摘要：acceptance-ase-counter-eab851738aa1
 
@@ -354,4 +357,54 @@ curl -i "$QA_URL/api/counter"
 - 证据：[summary.json](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[events.json](evidence/acceptance-ase-counter-eab851738aa1/events.json)。
 - 主流程 0 → 2 → -1 → 0 → 7 → 6 已完成。之后另起补充并发轮次从 6 到 16，不影响已记录的主流程结果。
 - 原卷保留：`ase-counter-eab851738aa1_mysql_data`；容器已停止并移除。
-- 人工待补：项目/仓库网页链接、成员及助教权限截图、另一位组员姓名/日期/README 复现确认。该自动化复测不代替组员本人的独立复核。
+- 当时的人工待补项：项目/仓库网页链接、成员及助教权限截图、另一位组员姓名/日期/README 复现确认。现已在下文补齐；该自动化复测不代替组员本人的复核，原始摘要保持不变。
+
+## CodeArts 人工证据补充：2026-10-10
+
+- 来源：史冠航在对话中提供的两张浏览器截图；原图保存于 `docs/images/codearts/`。
+- 项目页面显示完整名称 `2026高级软件工程_第22小组`，符合课程命名要求。
+- 仓库页面显示 `lab1-counter`、Repository ID `3095685` 和 `master` 分支；网页链接已按截图地址栏补入上方表格。
+- 证据：[项目页面](images/codearts/project-20261010.png)、[仓库页面](images/codearts/repository-20261010.png)。
+- 这两张图仅证明项目名称和仓库，当时成员与权限仍待补；后续截图与复核记录见下文。本补充不更改历史自动化运行的 SHA 和结果。
+
+### 项目与仓库成员补充
+
+用户随后提供五张成员页面截图，已确认下列人员均加入项目和 `lab1-counter` 仓库；仓库成员列表中六人的状态均为“使用中”。
+
+| 人员 | 项目角色 | 仓库角色（截图可见） |
+| --- | --- | --- |
+| 史冠航 | 项目经理、项目管理员 | 管理员（仓库所有者）；其余文字截断 |
+| 刘子扬 | 开发人员 | 开发人员 |
+| 刘乐翔 | 系统工程师 | 系统工程师 |
+| 李全昊 | 系统工程师 | 系统工程师 |
+| 杨润东 | 系统工程师 | 系统工程师 |
+| 助教李展发 | 浏览者 | 浏览者 |
+
+- 助教用户名：`hid_uq167z7i5yyrocf`，来源于项目成员页；截图显示加入时间为 2026-09-28 19:32:04（GMT+08:00）。
+- 仓库成员列表：[第 1 页](images/codearts/repository-members-page1-20261010.png)、[第 2 页](images/codearts/repository-members-page2-20261010.png)。
+- 项目成员列表：[组长及服务用户](images/codearts/project-members-lead-20261010.png)、[其余组员](images/codearts/project-members-team-20261010.png)、[助教](images/codearts/project-members-ta-20261010.png)。列表总数为 11，另 5 项为服务委托用户，不计入小组人数。
+- 成员截图证实加入状态和分配角色；下载权限由下一节仓库矩阵补充，未记录助教本人克隆结果。配置入口见 [华为云官方说明](https://support.huaweicloud.com/usermanual-codeartsrepo/codeartsrepo_03_0066.html)。
+- 加入状态与下载权限分别取证，成员截图本身不证明助教已经执行过克隆。
+
+### 仓库代码权限补充
+
+- 来源：用户提供的仓库“权限管理 → 代码”两页截图。证据：[第 1 页](images/codearts/repository-code-permissions-page1-20261010.png)、[浏览者所在第 2 页](images/codearts/repository-code-permissions-viewer-20261010.png)。
+- 项目经理、系统工程师、开发人员的“下载”和“提交”均已勾选，与五名组员在前述成员列表的角色对应。
+- 助教李展发对应的“浏览者”角色：“下载”已勾选，“提交”未勾选；“使用项目权限配置”开关关闭，以此仓库当前矩阵为配置证据。
+- 项目、成员加入和读取/下载权限配置证据已齐。未使用助教账号执行克隆，不将权限配置截图写成助教本人已成功克隆的记录。
+- 权限配置及下述组员 README 复核均已完成，ENV-01 的人工待补项现已全部补齐。
+
+### 史冠航 README 复核结果：2026-10-10（通过）
+
+- 被测版本：从 CodeArts 新克隆的 `master`，完整 SHA 为 `fb6c48085b1d9f2d25592343309f28de0e21c520`；独立 Compose 项目为 `lab1-gshi-review-20261010`。
+- 镜像拉取与前端端口占用问题经 Codex 协助排查后，三服务已运行。Codex 只读查询初始数据库/API 值均为 0；史冠航提供的 [18082 页面截图](evidence/manual-review-gshi-20261010/05-initial-zero-18082.png) 确认页面显示 0 和“已与数据库同步”。
+- 此前 18080 截图属于旧预览环境，不计入本次复核通过。实际协助操作与用户回执分开记录于 [README 复核记录](qa/reproduction-review.md)。
+- 史冠航收到“加三次、减一次”的步骤后，回传 [计数 2 的结果截图](evidence/manual-review-gshi-20261010/06-after-increment-decrement-two.png)，页面显示“已与数据库同步”。
+- 按上一步刷新及无痕窗口操作说明，史冠航回传 [刷新后仍为 2](evidence/manual-review-gshi-20261010/07-refresh-two.png)、[无痕窗口读取 2](evidence/manual-review-gshi-20261010/08-incognito-two.png) 两张截图，地址均为 `localhost:18082`，第二张有明确的“无痕模式”标识。
+- 史冠航随后提供 [计数 -1 的页面截图](evidence/manual-review-gshi-20261010/09-negative-one.png) 和 [本人 SQL 查询回执](evidence/manual-review-gshi-20261010/10-database-negative-one.txt)：MySQL 中 `id=1, value=-1`，与页面一致。
+- 史冠航本人完成三服务重启并等待恢复：[终端与三服务状态回执](evidence/manual-review-gshi-20261010/12-restart-services.txt) 显示 backend/db healthy、frontend Up；[刷新后页面截图](evidence/manual-review-gshi-20261010/11-after-restart-negative-one.png) 仍为 -1。
+- 史冠航按“加一次并刷新”的步骤回传 [重启后恢复写入 0 的截图](evidence/manual-review-gshi-20261010/13-after-restart-write-zero.png)，地址为 `localhost:18082`，页面显示 0 和“已与数据库同步”。
+- 史冠航继续按加七次的步骤提供 [重建前页面 7](evidence/manual-review-gshi-20261010/14-before-rebuild-seven.png)；Codex 只读采集 [重建前状态](evidence/manual-review-gshi-20261010/15-before-rebuild-state.txt)，SQL 为 `id=1, value=7`，并保存完整容器 ID 与原卷名称、创建时间、数据库挂载。
+- 史冠航本人完成不带 `-v` 的 down 和重新构建启动：[终端回执](evidence/manual-review-gshi-20261010/17-rebuild-user-receipt.txt) 显示三个容器已删除且原卷创建时间未变；[新无痕窗口截图](evidence/manual-review-gshi-20261010/16-after-rebuild-seven.png) 仍为 7。Codex [只读对照记录](evidence/manual-review-gshi-20261010/18-after-rebuild-state.txt) 确认三个容器 ID 全部变化、原卷名称/创建时间及数据库挂载不变、SQL 仍为 `id=1, value=7`。
+- 史冠航按重建后减一次并刷新页面的步骤，提供 [最终页面 6](evidence/manual-review-gshi-20261010/19-after-rebuild-write-six.png) 和 [本人最终 SQL 回执](evidence/manual-review-gshi-20261010/20-database-final-six.txt)：`id=1, value=6`，与页面一致。
+- **复核结论：通过。** 本轮人工主流程 0 → 2 → -1 → 0 → 7 → 6 完成，刷新/无痕读取、restart、保留原卷删除重建及恢复后继续写入均符合预期。镜像网络与端口冲突已解决；未重新执行的故障注入、初始化幂等性与并发测试保留原自动化版本及结果。

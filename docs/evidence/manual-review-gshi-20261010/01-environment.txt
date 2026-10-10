@@ -1,0 +1,26 @@
+来源：史冠航于 2026-10-10 在对话中粘贴的实际终端输出；由 Codex 整理，不是 Codex 代为运行。
+复核目录：~/lab1-counter-review
+
+执行顺序：
+git clone --branch master git@codehub.devcloud.cn-north-4.huaweicloud.com:c1aa0a224dba4c2591226b87a5af9407/lab1-counter.git lab1-counter-review
+cd lab1-counter-review
+git rev-parse HEAD
+git status --short
+git --version
+docker version --format '{{.Client.Version}} / {{.Server.Version}}'
+docker compose version
+
+实际输出：
+Cloning into 'lab1-counter-review'...
+remote: Enumerating objects: 309, done.
+remote: Counting objects: 100% (309/309), done.
+remote: Compressing objects: 100% (234/234), done.
+remote: Total 309 (delta 108), reused 169 (delta 55), pack-reused 0 (from 0)
+Receiving objects: 100% (309/309), 759.77 KiB | 5.71 MiB/s, done.
+Resolving deltas: 100% (108/108), done.
+fb6c48085b1d9f2d25592343309f28de0e21c520
+git version 2.50.1 (Apple Git-155)
+29.4.3 / 29.4.3
+Docker Compose version v5.1.4
+
+注：git status --short 没有输出；部署、数据库及页面尚未验证。

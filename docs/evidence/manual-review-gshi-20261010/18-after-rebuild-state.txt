@@ -1,0 +1,34 @@
+来源：Codex 于 2026-10-10 在史冠航本机执行的只读检查；不是史冠航本人操作回执。
+目录：/Users/gshi/lab1-counter-review
+Compose 项目：lab1-gshi-review-20261010
+对应用户截图：16-after-rebuild-seven.png（localhost:18082，无痕窗口，计数 7）。
+
+检查内容：UTC 时间、被测目录 HEAD、该 Compose 项目的容器完整 ID/名称/状态、SELECT id, value FROM counter ORDER BY id、数据卷名称/创建时间、数据库的 /var/lib/mysql 挂载。
+
+实际终端输出：
+2026-10-10T09:21:46Z
+fb6c48085b1d9f2d25592343309f28de0e21c520
+CONTAINER ID                                                       NAMES                                  STATUS
+073afc5e08dadaa8f4a20b06c7281d35b4208f187556befa6e22fe5ac6e5a4b7   lab1-gshi-review-20261010-frontend-1   Up 4 minutes
+ebde2b6b69f82f2368a536f9293167101917a82b2e4fb4df7ebf53090e34b8ba   lab1-gshi-review-20261010-backend-1    Up 4 minutes (healthy)
+64190a40ed480959dc5d714b6d73cb72281a1980384664729c7437fda1cd4d14   lab1-gshi-review-20261010-db-1         Up 4 minutes (healthy)
+id	value
+1	7
+lab1-gshi-review-20261010_mysql_data 2026-10-10T08:20:16Z
+lab1-gshi-review-20261010_mysql_data -> /var/lib/mysql
+
+退出码：0。
+本次只读查询未改变计数、容器或数据卷；重建后的减一及刷新验证待用户执行。
+
+
+重建前后对照（由以上输出与 15-before-rebuild-state.txt 比较）：
+lab1-gshi-review-20261010-backend-1
+  before: 78223edbf4a49707d1f281b25efa15f4c21507414467fb8d0bf2d06ce061a05e
+  after:  ebde2b6b69f82f2368a536f9293167101917a82b2e4fb4df7ebf53090e34b8ba
+lab1-gshi-review-20261010-db-1
+  before: d5f7b38d34af64e874fc2983e68b190b445a0be2af59ebc3772073d19d36de7e
+  after:  64190a40ed480959dc5d714b6d73cb72281a1980384664729c7437fda1cd4d14
+lab1-gshi-review-20261010-frontend-1
+  before: 98212b740b3844ef37584004c08b436b0fbbb9bbdc421524b052c84be6af5416
+  after:  073afc5e08dadaa8f4a20b06c7281d35b4208f187556befa6e22fe5ac6e5a4b7
+三个容器 ID 均改变；卷名称和创建时间不变，数据库仍挂载同一命名卷；前后 SQL 均为 id=1, value=7。

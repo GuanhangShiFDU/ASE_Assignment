@@ -1,0 +1,17 @@
+来源：史冠航于 2026-10-10 在对话中粘贴的实际终端输出，由 Codex 整理；不是 Codex 代为运行。
+复核目录：~/lab1-counter-review
+被测版本：fb6c48085b1d9f2d25592343309f28de0e21c520
+Compose 项目：lab1-gshi-review-20261010
+对应用户截图：19-after-rebuild-write-six.png（localhost:18082，无痕窗口，计数 6，显示“已与数据库同步”）。
+
+前序操作：用户按重建后减一次、刷新页面的步骤回传截图和以下 SQL 结果。
+执行命令：
+cd "$HOME/lab1-counter-review" &&
+docker compose -p lab1-gshi-review-20261010 exec -T db sh -c 'MYSQL_PWD="$MYSQL_PASSWORD" exec mysql --protocol=TCP -h 127.0.0.1 -u"$MYSQL_USER" "$MYSQL_DATABASE" --batch -e "SELECT id, value FROM counter ORDER BY id;"'
+
+实际输出：
+id	value
+1	6
+
+结论：重建后从 7 减一到 6，刷新页面和 MySQL 查询均为 6；重建后继续读写验证通过。本次人工主流程 0 → 2 → -1 → 0 → 7 → 6 完成。
+本回执不表示重新执行了历史自动化报告中的故障注入、初始化幂等性或并发测试。

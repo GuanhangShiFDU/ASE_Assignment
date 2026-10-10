@@ -1,0 +1,42 @@
+日期：2026-10-10
+执行人：Codex 在史冠航本机协助排查；不是史冠航本人操作回执。
+目录：/Users/gshi/lab1-counter-review
+Compose 项目：lab1-gshi-review-20261010
+
+触发：用户提供 localhost:18080 计数为 0 的页面截图。
+截图原样保存为 03-old-preview-18080-not-acceptance.png。
+
+只读检查：
+docker compose -p lab1-gshi-review-20261010 ps -a
+发现本次 backend/db 均为 Up (healthy)，frontend 为 Created。
+docker ps -a 显示旧预览容器 ase-preview-ea055152-frontend-1 正在映射 127.0.0.1:18080->80/tcp。
+docker inspect 本次 frontend 的 State.Error：
+failed to set up container networking: driver failed programming external connectivity on endpoint lab1-gshi-review-20261010-frontend-1 (7abcc8c108c035c74e1af51c15a685abdb47733edd3a6547a2de6530a20b4bd5): Bind for 127.0.0.1:18080 failed: port is already allocated
+
+因此 18080 截图属于旧预览环境，不作为本次复核通过证据。
+
+数据库只读查询：
+docker compose -p lab1-gshi-review-20261010 exec -T db sh -c 'MYSQL_PWD="$MYSQL_PASSWORD" exec mysql --protocol=TCP -h 127.0.0.1 -u"$MYSQL_USER" "$MYSQL_DATABASE" --batch -e "SELECT id, value FROM counter ORDER BY id;"'
+实际输出：
+id	value
+1	0
+
+docker volume inspect lab1-gshi-review-20261010_mysql_data --format '{{.Name}} {{.CreatedAt}}'
+实际输出：
+lab1-gshi-review-20261010_mysql_data 2026-10-10T08:20:16Z
+
+修复：确认 127.0.0.1:18082 可绑定后，将复核目录 .env 唯一的 FRONTEND_PORT 改为 18082，保留其他配置。
+执行 docker compose -p lab1-gshi-review-20261010 up -d --no-deps frontend
+实际结果：frontend Recreated / Started，退出码 0。
+
+修复后三服务状态（ps -a 输出摘录）：
+lab1-gshi-review-20261010-backend-1    Up 3 minutes (healthy)   127.0.0.1:13000->3000/tcp
+lab1-gshi-review-20261010-db-1         Up 3 minutes (healthy)   3306/tcp, 33060/tcp
+lab1-gshi-review-20261010-frontend-1   Up Less than a second    127.0.0.1:18082->80/tcp
+
+curl --fail --silent --show-error --max-time 10 http://127.0.0.1:18082/api/counter
+实际输出：{"value":0}
+curl --fail --silent --show-error --max-time 10 http://127.0.0.1:18082/api/health
+实际输出：{"status":"ok","database":"connected"}
+
+本轮操作未修改计数、删除数据库或数据卷；等待用户在新地址继续人工复核。

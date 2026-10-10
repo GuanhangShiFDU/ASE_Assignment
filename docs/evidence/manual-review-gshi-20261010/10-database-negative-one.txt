@@ -1,0 +1,16 @@
+来源：史冠航于 2026-10-10 在对话中粘贴的实际终端输出，由 Codex 整理；不是 Codex 代为运行。
+复核目录：~/lab1-counter-review
+被测版本：fb6c48085b1d9f2d25592343309f28de0e21c520
+Compose 项目：lab1-gshi-review-20261010
+对应页面截图：09-negative-one.png（localhost:18082，无痕窗口，计数 -1，显示“已与数据库同步”）
+
+执行命令：
+cd "$HOME/lab1-counter-review" &&
+docker compose -p lab1-gshi-review-20261010 exec -T db sh -c 'MYSQL_PWD="$MYSQL_PASSWORD" exec mysql --protocol=TCP -h 127.0.0.1 -u"$MYSQL_USER" "$MYSQL_DATABASE" --batch -e "SELECT id, value FROM counter ORDER BY id;"'
+
+实际输出：
+id	value
+1	-1
+
+结论：本次复核页面和 MySQL 中 id=1 的计数均为 -1，负数已保存到数据库。
+服务重启和容器重建的持久化验证尚未执行。
