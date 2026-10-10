@@ -21,7 +21,9 @@ export async function createHarness({ target = sourceRoot, output, retainVolume 
     BACKEND_PORT: '3000', FRONTEND_PORT: '8080' };
   const override = join(temporary, 'override.yaml');
   await writeFile(override, 'services:\n  backend:\n    ports: !override ["127.0.0.1::3000"]\n  frontend:\n    ports: !override ["127.0.0.1::80"]\n');
-  const compose = ['compose', '-p', project, '--env-file', '/dev/null', '-f', join(target, 'compose.yaml'), '-f', override];
+  const emptyEnv = join(temporary, 'empty.env');
+  await writeFile(emptyEnv, '', { mode: 0o600 });
+  const compose = ['compose', '-p', project, '--env-file', emptyEnv, '-f', join(target, 'compose.yaml'), '-f', override];
   const events = [];
   let browser, url, started = false;
   function run(command, args, { cwd = target, input } = {}) {

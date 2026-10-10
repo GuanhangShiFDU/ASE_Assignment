@@ -1,0 +1,212 @@
+[
+  {
+    "action": "decrement",
+    "status": 200,
+    "body": {
+      "value": 5
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 6
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 6
+    }
+  },
+  {
+    "action": "decrement",
+    "status": 200,
+    "body": {
+      "value": 5
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 9
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 7
+    }
+  },
+  {
+    "action": "decrement",
+    "status": 200,
+    "body": {
+      "value": 3
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 14
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 15
+    }
+  },
+  {
+    "action": "decrement",
+    "status": 200,
+    "body": {
+      "value": 4
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 11
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 16
+    }
+  },
+  {
+    "action": "decrement",
+    "status": 200,
+    "body": {
+      "value": 10
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 13
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 8
+    }
+  },
+  {
+    "action": "decrement",
+    "status": 200,
+    "body": {
+      "value": 14
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 10
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 14
+    }
+  },
+  {
+    "action": "decrement",
+    "status": 200,
+    "body": {
+      "value": 14
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 11
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 14
+    }
+  },
+  {
+    "action": "decrement",
+    "status": 200,
+    "body": {
+      "value": 13
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 4
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 15
+    }
+  },
+  {
+    "action": "decrement",
+    "status": 200,
+    "body": {
+      "value": 14
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 5
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 15
+    }
+  },
+  {
+    "action": "decrement",
+    "status": 200,
+    "body": {
+      "value": 13
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 12
+    }
+  },
+  {
+    "action": "increment",
+    "status": 200,
+    "body": {
+      "value": 15
+    }
+  }
+]

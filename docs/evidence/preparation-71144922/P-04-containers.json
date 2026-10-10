@@ -1,0 +1,45 @@
+[
+  {
+    "id": "02b5cb5b83f624a4ba6ed9683cd94357a32b79207cf7ea1332cae5e3d677efea",
+    "image": "ase-counter-e273fb0b9704-backend",
+    "name": "/ase-counter-e273fb0b9704-backend-1",
+    "state": "running",
+    "health": "healthy",
+    "mounts": []
+  },
+  {
+    "id": "179b8531da9a16632d964881497cf88a0c640a24968fcf91d97c699a749f8d7b",
+    "image": "mysql:8.4",
+    "name": "/ase-counter-e273fb0b9704-db-1",
+    "state": "running",
+    "health": "healthy",
+    "mounts": [
+      {
+        "Destination": "/var/lib/mysql",
+        "Driver": "local",
+        "Mode": "rw",
+        "Name": "ase-counter-e273fb0b9704_mysql_data",
+        "Propagation": "",
+        "RW": true,
+        "Source": "/var/lib/docker/volumes/ase-counter-e273fb0b9704_mysql_data/_data",
+        "Type": "volume"
+      },
+      {
+        "Destination": "/docker-entrypoint-initdb.d/01-init.sql",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/host_mnt/Users/gshi/ASE_Assignment/database/init.sql",
+        "Type": "bind"
+      }
+    ]
+  },
+  {
+    "id": "c22a135568ab33ec9c5b2ce5bb799c438e05dfe081e1445fa78a9e1af3e85843",
+    "image": "ase-counter-e273fb0b9704-frontend",
+    "name": "/ase-counter-e273fb0b9704-frontend-1",
+    "state": "running",
+    "health": null,
+    "mounts": []
+  }
+]

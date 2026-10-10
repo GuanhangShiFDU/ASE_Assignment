@@ -1,0 +1,109 @@
+{
+  "timestamp": "2026-10-08T03:44:04.412Z",
+  "project": "ase-counter-e273fb0b9704",
+  "target": "/Users/gshi/ASE_Assignment",
+  "os": "darwin 25.6.0 arm64",
+  "node": "v26.0.0",
+  "passes": [
+    "ENV-02: 三个服务由本轮源码构建启动，使用新项目和新命名卷；环境、构建、服务和挂载信息已记录",
+    "F-01: 首次页面和数据库均为 0，数据库仅有 id=1 一条记录",
+    "F-02: 连续 3 次 GET=0，读取前后数据库不变",
+    "F-03: 页面按 1、2、3、2 更新，SQL=2",
+    "F-04: 刷新和重新打开页面均读取 2",
+    "F-05: 独立无痕上下文读取共享值 2",
+    "F-06: 减至 -1，刷新和 SQL 均为 -1",
+    "P-01: restart 后保留 -1，并成功继续写入 0",
+    "P-02: 页面与 SQL=7，原容器 ID 和数据库卷已记录",
+    "P-03: down 未加 -v：项目容器已删除，原命名卷仍存在",
+    "P-04: 新容器 ID 与旧容器不同，复用原卷；新无痕页面和 SQL 均=7",
+    "P-05: 重建后减一到 6，刷新与 SQL 仍为 6；主验收序列完成",
+    "E-01: 实际停库后读取 503、可见提示且无假 0；恢复后读取 6",
+    "E-02: 实际停库后写入失败，保留上次确认值；恢复后仍=6，无自动重放",
+    "R-01: 重复执行初始化两次，原计数 6 保持不变",
+    "C-01: 主验收结束后另起补充轮次，从 6 并发 +20/-10；30 次成功，GET/页面/SQL=16"
+  ],
+  "scope": "local integration rehearsal; not final CodeArts acceptance",
+  "specifiedSHA": "a08ab44cb8dd2397e00b08a9cabc5eda0b0bb434",
+  "results": {
+    "ENV-01": {
+      "status": "待人工核验",
+      "actual": "Source=git@github.com:GuanhangShiFDU/ASE_Assignment.git; SHA=a08ab44cb8dd2397e00b08a9cabc5eda0b0bb434; clean=false. 项目命名、五位成员、助教权限与另一位组员复核仍需真实截图/确认。"
+    },
+    "ENV-02": {
+      "status": "通过",
+      "actual": "三个服务由本轮源码构建启动，使用新项目和新命名卷；环境、构建、服务和挂载信息已记录"
+    },
+    "F-01": {
+      "status": "通过",
+      "actual": "首次页面和数据库均为 0，数据库仅有 id=1 一条记录"
+    },
+    "F-02": {
+      "status": "通过",
+      "actual": "连续 3 次 GET=0，读取前后数据库不变"
+    },
+    "F-03": {
+      "status": "通过",
+      "actual": "页面按 1、2、3、2 更新，SQL=2"
+    },
+    "F-04": {
+      "status": "通过",
+      "actual": "刷新和重新打开页面均读取 2"
+    },
+    "F-05": {
+      "status": "通过",
+      "actual": "独立无痕上下文读取共享值 2"
+    },
+    "F-06": {
+      "status": "通过",
+      "actual": "减至 -1，刷新和 SQL 均为 -1"
+    },
+    "P-01": {
+      "status": "通过",
+      "actual": "restart 后保留 -1，并成功继续写入 0"
+    },
+    "P-02": {
+      "status": "通过",
+      "actual": "页面与 SQL=7，原容器 ID 和数据库卷已记录"
+    },
+    "P-03": {
+      "status": "通过",
+      "actual": "down 未加 -v：项目容器已删除，原命名卷仍存在"
+    },
+    "P-04": {
+      "status": "通过",
+      "actual": "新容器 ID 与旧容器不同，复用原卷；新无痕页面和 SQL 均=7"
+    },
+    "P-05": {
+      "status": "通过",
+      "actual": "重建后减一到 6，刷新与 SQL 仍为 6；主验收序列完成"
+    },
+    "E-01": {
+      "status": "通过",
+      "actual": "实际停库后读取 503、可见提示且无假 0；恢复后读取 6"
+    },
+    "E-02": {
+      "status": "通过",
+      "actual": "实际停库后写入失败，保留上次确认值；恢复后仍=6，无自动重放"
+    },
+    "R-01": {
+      "status": "通过",
+      "actual": "重复执行初始化两次，原计数 6 保持不变"
+    },
+    "C-01": {
+      "status": "通过",
+      "actual": "主验收结束后另起补充轮次，从 6 并发 +20/-10；30 次成功，GET/页面/SQL=16"
+    }
+  },
+  "baseline": "a08ab44cb8dd2397e00b08a9cabc5eda0b0bb434",
+  "branch": "master",
+  "workingChanges": "M README.md\n M backend/package.json\n M backend/src/app.js\n M docs/validation.md\n M frontend/src/App.jsx\n M frontend/src/styles.css\n?? backend/scripts/verify-query.sh\n?? backend/src/counter-query.js\n?? backend/test/counter-query.integration.test.js\n?? docs/counter-query.md\n?? docs/counter-ui.md\n?? docs/integration-acceptance.md\n?? docs/qa/reproduction-review.md\n?? frontend/onboarding/counter-harness.mjs\n?? frontend/onboarding/verify-counter.mjs\n?? scripts/acceptance/",
+  "origin": "git@github.com:GuanhangShiFDU/ASE_Assignment.git",
+  "docker": "29.4.3 / 29.4.3",
+  "compose": "5.1.4",
+  "url": "http://127.0.0.1:55028",
+  "chromium": "153.0.8010.12",
+  "finalConclusion": "自动化覆盖项通过；ENV-01 人工权限证据、组员复核和最终提交版本确认仍待补充，不能据此直接关闭卡片。",
+  "cleanup": "Containers removed; original volume retained. No -v used.",
+  "retainedVolume": "ase-counter-e273fb0b9704_mysql_data",
+  "success": true
+}
