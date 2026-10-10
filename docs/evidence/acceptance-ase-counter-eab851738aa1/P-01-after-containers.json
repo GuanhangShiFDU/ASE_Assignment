@@ -1,0 +1,45 @@
+[
+  {
+    "id": "108fa67decb1e8879579ee8e2a24a2207d03f0894d3613be9b15f87720078bb7",
+    "image": "ase-counter-eab851738aa1-backend",
+    "name": "/ase-counter-eab851738aa1-backend-1",
+    "state": "running",
+    "health": "healthy",
+    "mounts": []
+  },
+  {
+    "id": "f9ba4f263f7fd8e14f9410b779dcb0e75ff9fe3e803e5fa67125ed0a1e3a5f7a",
+    "image": "mysql:8.4",
+    "name": "/ase-counter-eab851738aa1-db-1",
+    "state": "running",
+    "health": "healthy",
+    "mounts": [
+      {
+        "Destination": "/var/lib/mysql",
+        "Driver": "local",
+        "Mode": "rw",
+        "Name": "ase-counter-eab851738aa1_mysql_data",
+        "Propagation": "",
+        "RW": true,
+        "Source": "/var/lib/docker/volumes/ase-counter-eab851738aa1_mysql_data/_data",
+        "Type": "volume"
+      },
+      {
+        "Destination": "/docker-entrypoint-initdb.d/01-init.sql",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/host_mnt/private/tmp/ase-final-audit-20261010/codearts-source/database/init.sql",
+        "Type": "bind"
+      }
+    ]
+  },
+  {
+    "id": "be60a831c0fbfa09f8ca2bd985107f99724130b58e60f984139d837cbdf70bf8",
+    "image": "ase-counter-eab851738aa1-frontend",
+    "name": "/ase-counter-eab851738aa1-frontend-1",
+    "state": "running",
+    "health": null,
+    "mounts": []
+  }
+]

@@ -1,0 +1,2 @@
+SELECT id, value FROM counter ORDER BY id;
+1	6

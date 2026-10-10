@@ -1,6 +1,6 @@
 # Lab 1 测试与验收记录
 
-> 已记录一次 CodeArts 指定版本的实际自动化验收；16 项通过，ENV-01 人工证据及另一位组员复核待补，尚不能关闭验收卡。
+> 杨润东已完成一次 CodeArts 指定版本验收；2026-10-10 又在史冠航本机由 Codex 复测最新合并版本，16 项自动化覆盖项通过。ENV-01 权限证据及组员本人复核待补。历史运行保留于文末及证据目录。
 
 依据：[课程 Lab 1 要求](https://openmsg.yuque.com/openmsg/gp3cfs/srlobx960pg94ozp)。QA 用例最初编写于 `7f8d1f9d1e5cddfce3c9d37c4b372a5f959ec7b2`。本张验收卡须在查询 API、Counter UI 和加减 API 全部合并并同步到 CodeArts 后执行。接口成功格式参考根 README，具体错误码以团队确认后的约定为准。
 
@@ -8,24 +8,24 @@
 
 | 字段 | 本轮实际值 |
 | --- | --- |
-| 运行编号（建议 YYYYMMDD-执行人-轮次） | acceptance-ase-counter-d78e392bf6c9 |
-| 执行人、日期与时区 | 待填写 |
-| 操作系统、版本、CPU 架构 | win32 10.0.26200 x64 |
-| Git、Docker 客户端与服务端、Compose 版本 | Docker 29.6.2 / 29.6.2; Compose 5.3.1; Git 版本另补 |
+| 运行编号（建议 YYYYMMDD-执行人-轮次） | acceptance-ase-counter-eab851738aa1 |
+| 执行人、日期与时区 | Codex 在史冠航本机执行自动化复测；开始于 2026-10-10 11:09:28（UTC+08:00）；不代替史冠航本人的 README 复核签名 |
+| 操作系统、版本、CPU 架构 | darwin 25.6.0 arm64 |
+| Git、Docker 客户端与服务端、Compose 版本 | Git 2.50.1 (Apple Git-155); Docker 29.4.3 / 29.4.3; Compose 5.1.4 |
 | 浏览器 A / B、版本（或 B 为独立无痕会话） | Chromium 153.0.8010.12，独立无痕上下文 |
 | CodeArts 项目名称与链接 | 待核验：按课程要求核对命名，不以截图简称代替 |
-| CodeArts 仓库链接 | 待填写 |
-| 验收来源分支 / 完整 Commit SHA | CodeArts master 来源，检出 d3ebee121acf153ab77cd684d246a74ebadfb916 |
-| GitHub 与 CodeArts 版本一致性 | 待核对两个 master 的完整 SHA |
+| CodeArts 仓库链接 | SSH：`git@codehub.devcloud.cn-north-4.huaweicloud.com:c1aa0a224dba4c2591226b87a5af9407/lab1-counter.git`；网页链接待从仓库首页复制 |
+| 验收来源分支 / 完整 Commit SHA | CodeArts master 来源，检出 ba87cf52eb50c6cf429bdf1013e1c2873f81f972 |
+| GitHub 与 CodeArts 版本一致性 | 2026-10-10 检查时两个 master 均为 `ba87cf52eb50c6cf429bdf1013e1c2873f81f972` |
 | 本地工作区是否干净 | 被测 CodeArts checkout 在执行前后均干净；证据保存在另一目录 |
-| Compose 项目名、访问 URL、端口 | ase-counter-d78e392bf6c9; http://127.0.0.1:53885（本轮临时端口） |
-| 数据卷实际名称、挂载路径、镜像版本 | ase-counter-d78e392bf6c9_mysql_data; /var/lib/mysql; mysql:8.4，详见容器记录 |
+| Compose 项目名、访问 URL、端口 | ase-counter-eab851738aa1; http://127.0.0.1:55721（本轮临时端口） |
+| 数据卷实际名称、挂载路径、镜像版本 | ase-counter-eab851738aa1_mysql_data; /var/lib/mysql; mysql:8.4，详见容器记录 |
 | 是否首次部署 / 数据卷是否全新 | 随机独立项目使用新卷；主流程未删除卷或手工恢复计数 |
-| 网络、资源或权限限制 | 待填写 |
+| 网络、资源或权限限制 | SSH 克隆、镜像构建与本轮测试成功；CodeArts 网页需登录，未核验成员/助教权限 |
 
 可运行 `bash scripts/qa/capture-environment.sh` 采集本机信息，输出到忽略 Git 的 `docs/qa/local-evidence/`。采集脚本只读，不启动应用、不运行计数用例、不把测试标为通过。浏览器版本、CodeArts 权限和数据卷挂载等需实际操作时另行记录。
 
-最终课程验收由一名组员从 **CodeArts** 在未部署过本项目的环境中克隆提交版本。此处的接入交接脚本从 GitHub clone，仅用于准备材料，不能充当课程最终干净环境验收。
+课程要求由一名组员从 **CodeArts** 在未部署过本项目的环境中克隆提交版本。交接脚本从 GitHub 获取验证工具，再单独从 CodeArts 克隆干净的被测版本；本轮同样使用独立 CodeArts checkout、新 Compose 项目和新数据卷，证据输出在被测目录外。不能用 GitHub 工具目录或旧开发数据库冒充被测环境。
 
 ## 2. 状态、证据与缺陷规则
 
@@ -116,8 +116,8 @@ curl -i "$QA_URL/api/counter"
 - **操作步骤**：核对项目名称、五位成员和联系助教的加入及仓库权限证据；实际从 CodeArts clone 指定版本，记录完整 SHA 和工作区状态；核对与 GitHub 交付版本一致。
 - **预期结果**：成员及助教能访问指定仓库；克隆成功，SHA 与交付记录一致，工作区干净。项目名称符合课程要求。
 - **状态**：待人工核验
-- **实际结果**：Source=git@codehub.devcloud.cn-north-4.huaweicloud.com:c1aa0a224dba4c2591226b87a5af9407/lab1-counter.git; SHA=d3ebee121acf153ab77cd684d246a74ebadfb916; clean=true. 项目命名、五位成员、助教权限与另一位组员复核仍需真实截图/确认。
-- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)；同目录下 ENV-01 开头的 SQL/截图/容器记录。
+- **实际结果**：Source=git@codehub.devcloud.cn-north-4.huaweicloud.com:c1aa0a224dba4c2591226b87a5af9407/lab1-counter.git; SHA=ba87cf52eb50c6cf429bdf1013e1c2873f81f972; clean=true. 项目命名、五位成员、助教权限与另一位组员复核仍需真实截图/确认。
+- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；摘要和命令记录证明来源及版本；项目/成员/助教权限截图仍待补充。
 - **缺陷/阻塞与复测**：成员/助教权限证据和另一位组员复核待补。
 
 ### ENV-02：源码构建及三容器部署
@@ -127,7 +127,7 @@ curl -i "$QA_URL/api/counter"
 - **预期结果**：配置校验成功，前后端从源码构建，frontend/backend/db 正常运行；数据库就绪后后端可用；命名卷挂载到 /var/lib/mysql，浏览器可访问页面。
 - **状态**：通过
 - **实际结果**：三个服务由本轮源码构建启动，使用新项目和新命名卷；环境、构建、服务和挂载信息已记录
-- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)；同目录下 ENV-02 开头的 SQL/截图/容器记录。
+- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；三服务状态见 [initial-services.txt](evidence/acceptance-ase-counter-eab851738aa1/initial-services.txt)，挂载见 [initial-containers.json](evidence/acceptance-ase-counter-eab851738aa1/initial-containers.json)。
 - **缺陷/阻塞与复测**：本次执行未发现该用例失败；版本变更后须重新验证。
 
 ### F-01：首次初始化为零
@@ -137,7 +137,7 @@ curl -i "$QA_URL/api/counter"
 - **预期结果**：页面和 API 均为 0；API HTTP 200 且 value 为整数；数据库恰有一行 id=1,value=0。
 - **状态**：通过
 - **实际结果**：首次页面和数据库均为 0，数据库仅有 id=1 一条记录
-- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)；同目录下 F-01 开头的 SQL/截图/容器记录。
+- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；同目录下 F-01 开头的 SQL/截图/容器记录。
 - **缺陷/阻塞与复测**：本次执行未发现该用例失败；版本变更后须重新验证。
 
 ### F-02：查询不改变计数
@@ -147,7 +147,7 @@ curl -i "$QA_URL/api/counter"
 - **预期结果**：每次 HTTP 200、value=0；读取前后仍恰有一行 id=1,value=0。
 - **状态**：通过
 - **实际结果**：连续 3 次 GET=0，读取前后数据库不变
-- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)；同目录下 F-02 开头的 SQL/截图/容器记录。
+- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；同目录下 F-02 开头的 SQL/截图/容器记录。
 - **缺陷/阻塞与复测**：本次执行未发现该用例失败；版本变更后须重新验证。
 
 ### F-03：加三减一并保存
@@ -157,7 +157,7 @@ curl -i "$QA_URL/api/counter"
 - **预期结果**：成功响应与页面依次为 1、2、3、2，数据库最终为 2；每次操作在后端保存后确认，不以本地变量假装成功。
 - **状态**：通过
 - **实际结果**：页面按 1、2、3、2 更新，SQL=2
-- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)；同目录下 F-03 开头的 SQL/截图/容器记录。
+- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；同目录下 F-03 开头的 SQL/截图/容器记录。
 - **缺陷/阻塞与复测**：本次执行未发现该用例失败；版本变更后须重新验证。
 
 ### F-04：刷新及重新打开读取
@@ -167,7 +167,7 @@ curl -i "$QA_URL/api/counter"
 - **预期结果**：两次都从后端读取并显示 2，读取不改变数据库。
 - **状态**：通过
 - **实际结果**：刷新和重新打开页面均读取 2
-- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)；同目录下 F-04 开头的 SQL/截图/容器记录。
+- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；同目录下 F-04 开头的 SQL/截图/容器记录。
 - **缺陷/阻塞与复测**：本次执行未发现该用例失败；版本变更后须重新验证。
 
 ### F-05：跨浏览器共享计数
@@ -177,7 +177,7 @@ curl -i "$QA_URL/api/counter"
 - **预期结果**：A、B 均为 2，不能仅依赖同一会话或 localStorage；不要求实时推送到未刷新的其他页面。
 - **状态**：通过
 - **实际结果**：独立无痕上下文读取共享值 2
-- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)；同目录下 F-05 开头的 SQL/截图/容器记录。
+- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；同目录下 F-05 开头的 SQL/截图/容器记录。
 - **缺陷/阻塞与复测**：本次执行未发现该用例失败；版本变更后须重新验证。
 
 ### F-06：减到负数并核对数据库
@@ -187,7 +187,7 @@ curl -i "$QA_URL/api/counter"
 - **预期结果**：页面与返回值依次 1、0、-1；刷新仍为 -1，SQL 恰有一行 id=1,value=-1。
 - **状态**：通过
 - **实际结果**：减至 -1，刷新和 SQL 均为 -1
-- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)；同目录下 F-06 开头的 SQL/截图/容器记录。
+- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；同目录下 F-06 开头的 SQL/截图/容器记录。
 - **缺陷/阻塞与复测**：本次执行未发现该用例失败；版本变更后须重新验证。
 
 ### P-01：服务重启后继续写入
@@ -197,7 +197,7 @@ curl -i "$QA_URL/api/counter"
 - **预期结果**：重启后页面和数据库仍为 -1；加一成功后页面、响应和数据库均为 0。
 - **状态**：通过
 - **实际结果**：restart 后保留 -1，并成功继续写入 0
-- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)；同目录下 P-01 开头的 SQL/截图/容器记录。
+- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；同目录下 P-01 开头的 SQL/截图/容器记录。
 - **缺陷/阻塞与复测**：本次执行未发现该用例失败；版本变更后须重新验证。
 
 ### P-02：为删除重建准备已持久化数据
@@ -207,7 +207,7 @@ curl -i "$QA_URL/api/counter"
 - **预期结果**：七次写入成功，最终数据库为 7；已记录重建前容器身份与实际命名卷。
 - **状态**：通过
 - **实际结果**：页面与 SQL=7，原容器 ID 和数据库卷已记录
-- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)；同目录下 P-02 开头的 SQL/截图/容器记录。
+- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；同目录下 P-02 开头的 SQL/截图/容器记录。
 - **缺陷/阻塞与复测**：本次执行未发现该用例失败；版本变更后须重新验证。
 
 ### P-03：删除容器但保留数据卷
@@ -217,7 +217,7 @@ curl -i "$QA_URL/api/counter"
 - **预期结果**：该项目容器已移除，原命名数据卷仍存在。不得手工重建或重新导入计数。
 - **状态**：通过
 - **实际结果**：down 未加 -v：项目容器已删除，原命名卷仍存在
-- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)；同目录下 P-03 开头的 SQL/截图/容器记录。
+- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；同目录下 P-03 开头的 SQL/截图/容器记录。
 - **缺陷/阻塞与复测**：本次执行未发现该用例失败；版本变更后须重新验证。
 
 ### P-04：重建新容器后读到原值
@@ -227,7 +227,7 @@ curl -i "$QA_URL/api/counter"
 - **预期结果**：容器已重新创建（与之前 ID 不同），仍挂载原卷；新页面和数据库均为 7。
 - **状态**：通过
 - **实际结果**：新容器 ID 与旧容器不同，复用原卷；新无痕页面和 SQL 均=7
-- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)；同目录下 P-04 开头的 SQL/截图/容器记录。
+- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；同目录下 P-04 开头的 SQL/截图/容器记录。
 - **缺陷/阻塞与复测**：本次执行未发现该用例失败；版本变更后须重新验证。
 
 ### P-05：重建后继续读写
@@ -237,7 +237,7 @@ curl -i "$QA_URL/api/counter"
 - **预期结果**：响应和页面变为 6，刷新后与数据库仍为 6；证明新容器可继续使用原数据读写。
 - **状态**：通过
 - **实际结果**：重建后减一到 6，刷新与 SQL 仍为 6；主验收序列完成
-- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)；同目录下 P-05 开头的 SQL/截图/容器记录。
+- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；同目录下 P-05 开头的 SQL/截图/容器记录。
 - **缺陷/阻塞与复测**：本次执行未发现该用例失败；版本变更后须重新验证。
 
 ### E-01：首次读取失败时可见提示
@@ -247,7 +247,7 @@ curl -i "$QA_URL/api/counter"
 - **预期结果**：数据库不可用时查询失败（按约定为 503），页面有可见提示，不将默认 0 冒充成功读取值；恢复后能读取原值 B。后端不可达时代理可能为 502，须区分并记录实际故障原因。
 - **状态**：通过
 - **实际结果**：实际停库后读取 503、可见提示且无假 0；恢复后读取 6
-- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)；同目录下 E-01 开头的 SQL/截图/容器记录。
+- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；同目录下 E-01 开头的 SQL/截图/容器记录。
 - **缺陷/阻塞与复测**：本次执行未发现该用例失败；版本变更后须重新验证。
 
 ### E-02：写入失败不能显示成功
@@ -257,7 +257,7 @@ curl -i "$QA_URL/api/counter"
 - **预期结果**：请求失败且提示可见；不能确认加一成功或把 B+1 当成已保存值；恢复后数据库与页面仍为 B，失败操作没有被悄悄重放。
 - **状态**：通过
 - **实际结果**：实际停库后写入失败，保留上次确认值；恢复后仍=6，无自动重放
-- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)；同目录下 E-02 开头的 SQL/截图/容器记录。
+- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；同目录下 E-02 开头的 SQL/截图/容器记录。
 - **缺陷/阻塞与复测**：本次执行未发现该用例失败；版本变更后须重新验证。
 
 ### R-01：初始化脚本不重置已有非零值
@@ -267,7 +267,7 @@ curl -i "$QA_URL/api/counter"
 - **预期结果**：仍恰有一条 id=1，value 保持 6（或原 B），不重置为 0，也不新增重复记录。
 - **状态**：通过
 - **实际结果**：重复执行初始化两次，原计数 6 保持不变
-- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)；同目录下 R-01 开头的 SQL/截图/容器记录。
+- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；同目录下 R-01 开头的 SQL/截图/容器记录。
 - **缺陷/阻塞与复测**：本次执行未发现该用例失败；版本变更后须重新验证。
 
 ### C-01：并发加减（团队补充检查）
@@ -277,7 +277,7 @@ curl -i "$QA_URL/api/counter"
 - **预期结果**：全部 30 次请求成功并返回整数；最终 GET、页面刷新和 SQL 均为 B+10，没有丢失更新。失败请求必须记录，不能只看最终值推断全部通过。
 - **状态**：通过
 - **实际结果**：主验收结束后另起补充轮次，从 6 并发 +20/-10；30 次成功，GET/页面/SQL=16
-- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)；同目录下 C-01 开头的 SQL/截图/容器记录。
+- **证据位置**：[本轮摘要](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[命令与 HTTP 记录](evidence/acceptance-ase-counter-eab851738aa1/events.json)；同目录下 C-01 开头的 SQL/截图/容器记录。
 - **缺陷/阻塞与复测**：本次执行未发现该用例失败；版本变更后须重新验证。
 
 ## 5. 本轮统计与结论
@@ -289,8 +289,8 @@ curl -i "$QA_URL/api/counter"
 | 通过 / 失败 / 阻塞 | 16 / 0 / 0；待人工核验 1 |
 | 当前验收结论 | 自动化覆盖项通过，人工证据与复核待完成 |
 | 未解决缺陷与阻塞 | ENV-01 权限证据、另一位组员复核待补 |
-| 执行人 / 复核人 / 日期 | 待填写 |
-| 最终 CodeArts 分支和完整 SHA | 来自 master 的提交 d3ebee121acf153ab77cd684d246a74ebadfb916；若最终交付代码变化需复测 |
+| 执行人 / 复核人 / 日期 | 自动化复测：Codex（史冠航本机），2026-10-10；组员本人独立复核待完成 |
+| 最终 CodeArts 分支和完整 SHA | 本轮实际被测为 master 的 `ba87cf52eb50c6cf429bdf1013e1c2873f81f972`；最终交付 SHA 待收尾合并后冻结，见 [提交核对表](submission.md) |
 
 每轮执行后据实际状态更新统计。ENV、F、P、E、R 必须按约定完成；持久化结论必须包含删除容器后重建的 P-03/P-04/P-05，不能仅靠 restart。修复后记录新版本复测结果；代码版本改变时明确哪些用例已重跑、哪些尚未覆盖。
 
@@ -339,9 +339,19 @@ curl -i "$QA_URL/api/counter"
 
 ## CodeArts 实际执行摘要：acceptance-ase-counter-d78e392bf6c9
 
+- 执行人：杨润东（Git author：Rundong Yang），依据已合并的 [接收端执行记录](integration-acceptance.md#接收端实际执行记录)。本节保留原始被测版本和 Windows 证据。
 - 时间：2026-10-10T01:50:15.347Z。被测完整 SHA：`d3ebee121acf153ab77cd684d246a74ebadfb916`。
 - 工具在 GitHub 交接分支运行，业务从独立、干净的 CodeArts checkout 构建；两者不是同一个工作区。
 - 证据：[summary.json](evidence/acceptance-ase-counter-d78e392bf6c9/summary.json)、[events.json](evidence/acceptance-ase-counter-d78e392bf6c9/events.json)。
 - 主流程 0 → 2 → -1 → 0 → 7 → 6 已完成。之后另起补充并发轮次从 6 到 16，不影响已记录的主流程结果。
 - 原卷保留：`ase-counter-d78e392bf6c9_mysql_data`；容器已停止并移除。
 - 人工待补：执行人、项目/仓库网页链接、成员及助教权限截图、另一位组员姓名/日期/README 复现确认。
+
+## CodeArts 实际执行摘要：acceptance-ase-counter-eab851738aa1
+
+- 时间：2026-10-10T03:09:28.268Z。被测完整 SHA：`ba87cf52eb50c6cf429bdf1013e1c2873f81f972`。
+- 执行方式：Codex 在史冠航本机运行已有验收工具，业务从独立、干净的 CodeArts checkout 构建；没有把本地 README/报告修改带入被测代码。
+- 证据：[summary.json](evidence/acceptance-ase-counter-eab851738aa1/summary.json)、[events.json](evidence/acceptance-ase-counter-eab851738aa1/events.json)。
+- 主流程 0 → 2 → -1 → 0 → 7 → 6 已完成。之后另起补充并发轮次从 6 到 16，不影响已记录的主流程结果。
+- 原卷保留：`ase-counter-eab851738aa1_mysql_data`；容器已停止并移除。
+- 人工待补：项目/仓库网页链接、成员及助教权限截图、另一位组员姓名/日期/README 复现确认。该自动化复测不代替组员本人的独立复核。
