@@ -1,0 +1,4 @@
+NAME                                  IMAGE                               COMMAND                  SERVICE    CREATED          STATUS                   PORTS
+ase-counter-e273fb0b9704-backend-1    ase-counter-e273fb0b9704-backend    "docker-entrypoint.s…"   backend    28 seconds ago   Up 8 seconds (healthy)   127.0.0.1:54953->3000/tcp
+ase-counter-e273fb0b9704-db-1         mysql:8.4                           "docker-entrypoint.s…"   db         28 seconds ago   Up 7 seconds (healthy)   3306/tcp, 33060/tcp
+ase-counter-e273fb0b9704-frontend-1   ase-counter-e273fb0b9704-frontend   "/docker-entrypoint.…"   frontend   28 seconds ago   Up 8 seconds             127.0.0.1:54954->80/tcp

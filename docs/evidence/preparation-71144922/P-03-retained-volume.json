@@ -1,0 +1,16 @@
+[
+    {
+        "CreatedAt": "2026-10-08T03:44:12Z",
+        "Driver": "local",
+        "Labels": {
+            "com.docker.compose.config-hash": "072168af589f81daf538b624ab08432b829dbbdccdce5639ee419b8be20240b4",
+            "com.docker.compose.project": "ase-counter-e273fb0b9704",
+            "com.docker.compose.version": "5.1.4",
+            "com.docker.compose.volume": "mysql_data"
+        },
+        "Mountpoint": "/var/lib/docker/volumes/ase-counter-e273fb0b9704_mysql_data/_data",
+        "Name": "ase-counter-e273fb0b9704_mysql_data",
+        "Options": null,
+        "Scope": "local"
+    }
+]

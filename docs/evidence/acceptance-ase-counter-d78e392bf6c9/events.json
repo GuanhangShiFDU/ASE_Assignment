@@ -1,0 +1,1370 @@
+[
+  {
+    "time": "2026-10-10T01:50:15.366Z",
+    "command": "git",
+    "args": [
+      "rev-parse",
+      "HEAD"
+    ],
+    "code": 0,
+    "stdout": "d3ebee121acf153ab77cd684d246a74ebadfb916\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:15.385Z",
+    "command": "git",
+    "args": [
+      "branch",
+      "--show-current"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:15.408Z",
+    "command": "git",
+    "args": [
+      "status",
+      "--porcelain"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:15.425Z",
+    "command": "git",
+    "args": [
+      "remote",
+      "get-url",
+      "origin"
+    ],
+    "code": 0,
+    "stdout": "git@codehub.devcloud.cn-north-4.huaweicloud.com:c1aa0a224dba4c2591226b87a5af9407/lab1-counter.git\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:15.541Z",
+    "command": "docker",
+    "args": [
+      "version",
+      "--format",
+      "{{.Client.Version}} / {{.Server.Version}}"
+    ],
+    "code": 0,
+    "stdout": "29.6.2 / 29.6.2\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:15.637Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "version",
+      "--short"
+    ],
+    "code": 0,
+    "stdout": "5.3.1\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:15.759Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "config",
+      "--quiet"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:41.835Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "up",
+      "-d",
+      "--build",
+      "--wait",
+      "--wait-timeout",
+      "180"
+    ],
+    "code": 0,
+    "stdout": "#1 [internal] load local bake definitions\n#1 reading from stdin 1.45kB 0.0s done\n#1 DONE 0.0s\n\n#2 [frontend internal] load build definition from Dockerfile\n#2 transferring dockerfile: 302B done\n#2 DONE 0.0s\n\n#3 [backend internal] load build definition from Dockerfile\n#3 transferring dockerfile: 253B done\n#3 DONE 0.0s\n\n#4 [frontend internal] load metadata for docker.io/library/node:24-alpine\n#4 DONE 0.0s\n\n#5 [backend internal] load .dockerignore\n#5 transferring context: 98B 0.0s done\n#5 DONE 0.0s\n\n#6 [frontend internal] load metadata for docker.io/library/nginx:1.28-alpine\n#6 DONE 0.1s\n\n#7 [frontend internal] load .dockerignore\n#7 transferring context: 114B 0.0s done\n#7 DONE 0.1s\n\n#8 [backend internal] load build context\n#8 transferring context: 41.68kB 0.1s done\n#8 DONE 0.1s\n\n#9 [frontend 1/5] FROM docker.io/library/node:24-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1\n#9 resolve docker.io/library/node:24-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1 0.0s done\n#9 DONE 0.1s\n\n#10 [frontend stage-1 1/3] FROM docker.io/library/nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236\n#10 resolve docker.io/library/nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236 0.0s done\n#10 DONE 0.2s\n\n#11 [backend 2/5] WORKDIR /app\n#11 DONE 0.0s\n\n#12 [frontend internal] load build context\n#12 transferring context: 42.59kB 0.1s done\n#12 DONE 0.1s\n\n#13 [backend 3/5] COPY package.json package-lock.json ./\n#13 DONE 0.1s\n\n#14 [frontend build 3/6] COPY package.json package-lock.json ./\n#14 DONE 0.0s\n\n#15 [frontend build 4/6] RUN npm ci\n#15 ...\n\n#16 [frontend stage-1 2/3] COPY nginx.conf /etc/nginx/conf.d/default.conf\n#16 DONE 0.0s\n\n#17 [backend 4/5] RUN npm ci --omit=dev\n#17 5.401 \n#17 5.401 added 78 packages, and audited 79 packages in 5s\n#17 5.401 \n#17 5.401 30 packages are looking for funding\n#17 5.401   run `npm fund` for details\n#17 5.402 \n#17 5.402 found 0 vulnerabilities\n#17 5.403 npm notice\n#17 5.403 npm notice New major version of npm available! 11.19.0 -> 12.2.0\n#17 5.403 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0\n#17 5.403 npm notice To update run: npm install -g npm@12.2.0\n#17 5.403 npm notice\n#17 DONE 5.5s\n\n#18 [backend 5/5] COPY --chown=node:node src ./src\n#18 DONE 0.0s\n\n#15 [frontend build 4/6] RUN npm ci\n#15 ...\n\n#19 [backend] exporting to image\n#19 exporting layers\n#19 exporting layers 0.4s done\n#19 exporting manifest sha256:87eee479c89299d348ca07c6a4864d8abbe160af9228172bdfe479fa592638a6 0.0s done\n#19 exporting config sha256:df39909d5b784a16860e6c20426b470173ea1086ab2f1ed41583e0e0f1d887b1 0.0s done\n#19 exporting attestation manifest sha256:e738f26a7eb60c91e21137ddd5a953636e9a905b6d6b027e80c97cc31019bc00 0.0s done\n#19 exporting manifest list sha256:e7126c02a0fdbfe87418fa85220935ca323bb6a1e64b8c5c939b43919cc8aa89 0.0s done\n#19 naming to docker.io/library/ase-counter-d78e392bf6c9-backend:latest done\n#19 unpacking to docker.io/library/ase-counter-d78e392bf6c9-backend:latest\n#19 unpacking to docker.io/library/ase-counter-d78e392bf6c9-backend:latest 0.3s done\n#19 DONE 0.8s\n\n#20 [backend] resolving provenance for metadata file\n#20 DONE 0.0s\n\n#15 [frontend build 4/6] RUN npm ci\n#15 6.890 \n#15 6.890 added 19 packages, and audited 20 packages in 6s\n#15 6.890 \n#15 6.890 8 packages are looking for funding\n#15 6.890   run `npm fund` for details\n#15 6.892 \n#15 6.892 1 high severity vulnerability\n#15 6.892 \n#15 6.892 To address all issues, run:\n#15 6.892   npm audit fix\n#15 6.892 \n#15 6.892 Run `npm audit` for details.\n#15 6.894 npm notice\n#15 6.894 npm notice New major version of npm available! 11.19.0 -> 12.2.0\n#15 6.894 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0\n#15 6.894 npm notice To update run: npm install -g npm@12.2.0\n#15 6.894 npm notice\n#15 DONE 7.0s\n\n#21 [frontend build 5/6] COPY . .\n#21 DONE 0.0s\n\n#22 [frontend build 6/6] RUN npm run build\n#22 0.295 \n#22 0.295 > ase-counter-frontend@0.1.0 build\n#22 0.295 > vite build\n#22 0.295 \n#22 0.516 vite v8.3.1 building client environment for production...\n#22 0.528 transforming...\n#22 0.583 ✓ 16 modules transformed.\n#22 0.617 rendering chunks...\n#22 0.648 computing gzip size...\n#22 0.651 dist/index.html                   0.42 kB │ gzip:  0.31 kB\n#22 0.651 dist/assets/index-DsU1Lc6v.css    1.65 kB │ gzip:  0.82 kB\n#22 0.651 dist/assets/index-CkIL6QPH.js   222.51 kB │ gzip: 70.08 kB\n#22 0.651 \n#22 0.652 ✓ built in 134ms\n#22 DONE 0.7s\n\n#23 [frontend stage-1 3/3] COPY --from=build /app/dist /usr/share/nginx/html\n#23 DONE 0.0s\n\n#24 [frontend] exporting to image\n#24 exporting layers 0.1s done\n#24 exporting manifest sha256:9618d2f3760eab42c031f04c070c099b99b71f770cd2b6b853659268d6eba677 0.0s done\n#24 exporting config sha256:3cecf4cb4c0985be2bb4c9b9a1b59de72fcae13271707e7eca16eda805b5d029 done\n#24 exporting attestation manifest sha256:f9be7e965a17c69d9e3eb820de1bc8aab68f16493142cb73204cfd2255fcffd8\n#24 exporting attestation manifest sha256:f9be7e965a17c69d9e3eb820de1bc8aab68f16493142cb73204cfd2255fcffd8 0.0s done\n#24 exporting manifest list sha256:4e72894a8f38112164a9b6bf88fae32f3e76e83a8db4dc4e18b73d15d19de4ac done\n#24 naming to docker.io/library/ase-counter-d78e392bf6c9-frontend:latest done\n#24 unpacking to docker.io/library/ase-counter-d78e392bf6c9-frontend:latest 0.0s done\n#24 DONE 0.2s\n\n#25 [frontend] resolving provenance for metadata file\n#25 DONE 0.0s\n",
+    "stderr": " Image ase-counter-d78e392bf6c9-frontend Building \n Image ase-counter-d78e392bf6c9-backend Building \n Image ase-counter-d78e392bf6c9-backend Built \n Image ase-counter-d78e392bf6c9-frontend Built \n Network ase-counter-d78e392bf6c9_default Creating \n Network ase-counter-d78e392bf6c9_default Created \n Volume ase-counter-d78e392bf6c9_mysql_data Creating \n Volume ase-counter-d78e392bf6c9_mysql_data Created \n Container ase-counter-d78e392bf6c9-db-1 Creating \n Container ase-counter-d78e392bf6c9-db-1 Created \n Container ase-counter-d78e392bf6c9-backend-1 Creating \n Container ase-counter-d78e392bf6c9-backend-1 Created \n Container ase-counter-d78e392bf6c9-frontend-1 Creating \n Container ase-counter-d78e392bf6c9-frontend-1 Created \n Container ase-counter-d78e392bf6c9-db-1 Starting \n Container ase-counter-d78e392bf6c9-db-1 Started \n Container ase-counter-d78e392bf6c9-db-1 Waiting \n Container ase-counter-d78e392bf6c9-db-1 Healthy \n Container ase-counter-d78e392bf6c9-backend-1 Starting \n Container ase-counter-d78e392bf6c9-backend-1 Started \n Container ase-counter-d78e392bf6c9-backend-1 Waiting \n Container ase-counter-d78e392bf6c9-backend-1 Healthy \n Container ase-counter-d78e392bf6c9-frontend-1 Starting \n Container ase-counter-d78e392bf6c9-frontend-1 Started \n Container ase-counter-d78e392bf6c9-backend-1 Waiting \n Container ase-counter-d78e392bf6c9-db-1 Waiting \n Container ase-counter-d78e392bf6c9-frontend-1 Waiting \n Container ase-counter-d78e392bf6c9-frontend-1 Healthy \n Container ase-counter-d78e392bf6c9-db-1 Healthy \n Container ase-counter-d78e392bf6c9-backend-1 Healthy \n"
+  },
+  {
+    "time": "2026-10-10T01:50:41.983Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "port",
+      "frontend",
+      "80"
+    ],
+    "code": 0,
+    "stdout": "127.0.0.1:65214\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:45.779Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "ps",
+      "-a"
+    ],
+    "code": 0,
+    "stdout": "NAME                                  IMAGE                               COMMAND                   SERVICE    CREATED          STATUS                    PORTS\nase-counter-d78e392bf6c9-backend-1    ase-counter-d78e392bf6c9-backend    \"docker-entrypoint.s…\"   backend    20 seconds ago   Up 9 seconds (healthy)    127.0.0.1:50968->3000/tcp\nase-counter-d78e392bf6c9-db-1         mysql:8.4                           \"docker-entrypoint.s…\"   db         21 seconds ago   Up 20 seconds (healthy)   3306/tcp, 33060/tcp\nase-counter-d78e392bf6c9-frontend-1   ase-counter-d78e392bf6c9-frontend   \"/docker-entrypoint.…\"   frontend   20 seconds ago   Up 4 seconds              127.0.0.1:65214->80/tcp\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:45.959Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "ps",
+      "-q"
+    ],
+    "code": 0,
+    "stdout": "d7c65107ec679c13735512c7e66606158d15f35afba24e36c566c3086ae20973\n76d23296b23d053a87139b519e6dc867c851224a5f4f5a1265a8f652b811694e\n8cce4620e9357553708857c3c6c7109969ec92cd3ff9adc280912066d9b8a7da\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:46.024Z",
+    "command": "docker",
+    "args": [
+      "inspect",
+      "--format",
+      "{\"id\":{{json .Id}},\"image\":{{json .Config.Image}},\"name\":{{json .Name}},\"state\":{{json .State.Status}},\"health\":{{with index .State \"Health\"}}{{json .Status}}{{else}}null{{end}},\"mounts\":{{json .Mounts}}}",
+      "d7c65107ec679c13735512c7e66606158d15f35afba24e36c566c3086ae20973",
+      "76d23296b23d053a87139b519e6dc867c851224a5f4f5a1265a8f652b811694e",
+      "8cce4620e9357553708857c3c6c7109969ec92cd3ff9adc280912066d9b8a7da"
+    ],
+    "code": 0,
+    "stdout": "{\"id\":\"d7c65107ec679c13735512c7e66606158d15f35afba24e36c566c3086ae20973\",\"image\":\"ase-counter-d78e392bf6c9-backend\",\"name\":\"/ase-counter-d78e392bf6c9-backend-1\",\"state\":\"running\",\"health\":\"healthy\",\"mounts\":[]}\n{\"id\":\"76d23296b23d053a87139b519e6dc867c851224a5f4f5a1265a8f652b811694e\",\"image\":\"mysql:8.4\",\"name\":\"/ase-counter-d78e392bf6c9-db-1\",\"state\":\"running\",\"health\":\"healthy\",\"mounts\":[{\"Destination\":\"/var/lib/mysql\",\"Driver\":\"local\",\"Mode\":\"rw\",\"Name\":\"ase-counter-d78e392bf6c9_mysql_data\",\"Propagation\":\"\",\"RW\":true,\"Source\":\"/var/lib/docker/volumes/ase-counter-d78e392bf6c9_mysql_data/_data\",\"Type\":\"volume\"},{\"Destination\":\"/docker-entrypoint-initdb.d/01-init.sql\",\"Mode\":\"ro\",\"Propagation\":\"rprivate\",\"RW\":false,\"Source\":\"/run/desktop/mnt/host/c/Users/30968/Downloads/integration-acceptance-71144922-fixed/ASE_Assignment-71144922/.git/card-71144922/codearts-source/database/init.sql\",\"Type\":\"bind\"}]}\n{\"id\":\"8cce4620e9357553708857c3c6c7109969ec92cd3ff9adc280912066d9b8a7da\",\"image\":\"ase-counter-d78e392bf6c9-frontend\",\"name\":\"/ase-counter-d78e392bf6c9-frontend-1\",\"state\":\"running\",\"health\":null,\"mounts\":[]}\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:46.173Z",
+    "http": "http://127.0.0.1:65214/api/counter",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "value": 0
+    }
+  },
+  {
+    "time": "2026-10-10T01:50:46.397Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "exec",
+      "-T",
+      "db",
+      "sh",
+      "-c",
+      "MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql --protocol=TCP -h 127.0.0.1 -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\" --batch --skip-column-names"
+    ],
+    "code": 0,
+    "stdout": "1\t0\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:46.710Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "exec",
+      "-T",
+      "db",
+      "sh",
+      "-c",
+      "MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql --protocol=TCP -h 127.0.0.1 -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\" --batch --skip-column-names"
+    ],
+    "code": 0,
+    "stdout": "1\t0\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:46.774Z",
+    "http": "http://127.0.0.1:65214/api/counter/increment",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "value": 1
+    }
+  },
+  {
+    "time": "2026-10-10T01:50:46.825Z",
+    "http": "http://127.0.0.1:65214/api/counter/increment",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "value": 2
+    }
+  },
+  {
+    "time": "2026-10-10T01:50:46.874Z",
+    "http": "http://127.0.0.1:65214/api/counter/increment",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "value": 3
+    }
+  },
+  {
+    "time": "2026-10-10T01:50:46.924Z",
+    "http": "http://127.0.0.1:65214/api/counter/decrement",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "value": 2
+    }
+  },
+  {
+    "time": "2026-10-10T01:50:47.159Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "exec",
+      "-T",
+      "db",
+      "sh",
+      "-c",
+      "MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql --protocol=TCP -h 127.0.0.1 -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\" --batch --skip-column-names"
+    ],
+    "code": 0,
+    "stdout": "1\t2\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:47.206Z",
+    "http": "http://127.0.0.1:65214/api/counter",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "value": 2
+    }
+  },
+  {
+    "time": "2026-10-10T01:50:47.232Z",
+    "http": "http://127.0.0.1:65214/api/counter",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "value": 2
+    }
+  },
+  {
+    "time": "2026-10-10T01:50:47.456Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "exec",
+      "-T",
+      "db",
+      "sh",
+      "-c",
+      "MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql --protocol=TCP -h 127.0.0.1 -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\" --batch --skip-column-names"
+    ],
+    "code": 0,
+    "stdout": "1\t2\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:47.613Z",
+    "http": "http://127.0.0.1:65214/api/counter",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "value": 2
+    }
+  },
+  {
+    "time": "2026-10-10T01:50:47.631Z",
+    "http": "http://127.0.0.1:65214/api/counter",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "value": 2
+    }
+  },
+  {
+    "time": "2026-10-10T01:50:47.642Z",
+    "http": "http://127.0.0.1:65214/api/counter",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "value": 2
+    }
+  },
+  {
+    "time": "2026-10-10T01:50:47.876Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "exec",
+      "-T",
+      "db",
+      "sh",
+      "-c",
+      "MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql --protocol=TCP -h 127.0.0.1 -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\" --batch --skip-column-names"
+    ],
+    "code": 0,
+    "stdout": "1\t2\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:47.958Z",
+    "http": "http://127.0.0.1:65214/api/counter/decrement",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "value": 1
+    }
+  },
+  {
+    "time": "2026-10-10T01:50:48.007Z",
+    "http": "http://127.0.0.1:65214/api/counter/decrement",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "value": 0
+    }
+  },
+  {
+    "time": "2026-10-10T01:50:48.057Z",
+    "http": "http://127.0.0.1:65214/api/counter/decrement",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "value": -1
+    }
+  },
+  {
+    "time": "2026-10-10T01:50:48.082Z",
+    "http": "http://127.0.0.1:65214/api/counter",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "value": -1
+    }
+  },
+  {
+    "time": "2026-10-10T01:50:48.335Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "exec",
+      "-T",
+      "db",
+      "sh",
+      "-c",
+      "MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql --protocol=TCP -h 127.0.0.1 -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\" --batch --skip-column-names"
+    ],
+    "code": 0,
+    "stdout": "1\t-1\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:48.556Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "ps",
+      "-a"
+    ],
+    "code": 0,
+    "stdout": "NAME                                  IMAGE                               COMMAND                   SERVICE    CREATED          STATUS                    PORTS\nase-counter-d78e392bf6c9-backend-1    ase-counter-d78e392bf6c9-backend    \"docker-entrypoint.s…\"   backend    23 seconds ago   Up 12 seconds (healthy)   127.0.0.1:50968->3000/tcp\nase-counter-d78e392bf6c9-db-1         mysql:8.4                           \"docker-entrypoint.s…\"   db         24 seconds ago   Up 23 seconds (healthy)   3306/tcp, 33060/tcp\nase-counter-d78e392bf6c9-frontend-1   ase-counter-d78e392bf6c9-frontend   \"/docker-entrypoint.…\"   frontend   23 seconds ago   Up 7 seconds              127.0.0.1:65214->80/tcp\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:48.732Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "ps",
+      "-q"
+    ],
+    "code": 0,
+    "stdout": "d7c65107ec679c13735512c7e66606158d15f35afba24e36c566c3086ae20973\n76d23296b23d053a87139b519e6dc867c851224a5f4f5a1265a8f652b811694e\n8cce4620e9357553708857c3c6c7109969ec92cd3ff9adc280912066d9b8a7da\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:48.809Z",
+    "command": "docker",
+    "args": [
+      "inspect",
+      "--format",
+      "{\"id\":{{json .Id}},\"image\":{{json .Config.Image}},\"name\":{{json .Name}},\"state\":{{json .State.Status}},\"health\":{{with index .State \"Health\"}}{{json .Status}}{{else}}null{{end}},\"mounts\":{{json .Mounts}}}",
+      "d7c65107ec679c13735512c7e66606158d15f35afba24e36c566c3086ae20973",
+      "76d23296b23d053a87139b519e6dc867c851224a5f4f5a1265a8f652b811694e",
+      "8cce4620e9357553708857c3c6c7109969ec92cd3ff9adc280912066d9b8a7da"
+    ],
+    "code": 0,
+    "stdout": "{\"id\":\"d7c65107ec679c13735512c7e66606158d15f35afba24e36c566c3086ae20973\",\"image\":\"ase-counter-d78e392bf6c9-backend\",\"name\":\"/ase-counter-d78e392bf6c9-backend-1\",\"state\":\"running\",\"health\":\"healthy\",\"mounts\":[]}\n{\"id\":\"76d23296b23d053a87139b519e6dc867c851224a5f4f5a1265a8f652b811694e\",\"image\":\"mysql:8.4\",\"name\":\"/ase-counter-d78e392bf6c9-db-1\",\"state\":\"running\",\"health\":\"healthy\",\"mounts\":[{\"Destination\":\"/var/lib/mysql\",\"Driver\":\"local\",\"Mode\":\"rw\",\"Name\":\"ase-counter-d78e392bf6c9_mysql_data\",\"Propagation\":\"\",\"RW\":true,\"Source\":\"/var/lib/docker/volumes/ase-counter-d78e392bf6c9_mysql_data/_data\",\"Type\":\"volume\"},{\"Destination\":\"/docker-entrypoint-initdb.d/01-init.sql\",\"Mode\":\"ro\",\"Propagation\":\"rprivate\",\"RW\":false,\"Source\":\"/run/desktop/mnt/host/c/Users/30968/Downloads/integration-acceptance-71144922-fixed/ASE_Assignment-71144922/.git/card-71144922/codearts-source/database/init.sql\",\"Type\":\"bind\"}]}\n{\"id\":\"8cce4620e9357553708857c3c6c7109969ec92cd3ff9adc280912066d9b8a7da\",\"image\":\"ase-counter-d78e392bf6c9-frontend\",\"name\":\"/ase-counter-d78e392bf6c9-frontend-1\",\"state\":\"running\",\"health\":null,\"mounts\":[]}\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:52.350Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "restart"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": " Container ase-counter-d78e392bf6c9-backend-1 Restarting \n Container ase-counter-d78e392bf6c9-db-1 Restarting \n Container ase-counter-d78e392bf6c9-frontend-1 Restarting \n Container ase-counter-d78e392bf6c9-backend-1 Started \n Container ase-counter-d78e392bf6c9-frontend-1 Started \n Container ase-counter-d78e392bf6c9-db-1 Started \n"
+  },
+  {
+    "time": "2026-10-10T01:50:58.653Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "up",
+      "-d",
+      "--wait",
+      "--wait-timeout",
+      "180"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": " Container ase-counter-d78e392bf6c9-db-1 Running \n Container ase-counter-d78e392bf6c9-frontend-1 Running \n Container ase-counter-d78e392bf6c9-backend-1 Running \n Container ase-counter-d78e392bf6c9-db-1 Waiting \n Container ase-counter-d78e392bf6c9-db-1 Healthy \n Container ase-counter-d78e392bf6c9-backend-1 Waiting \n Container ase-counter-d78e392bf6c9-backend-1 Healthy \n Container ase-counter-d78e392bf6c9-frontend-1 Waiting \n Container ase-counter-d78e392bf6c9-backend-1 Waiting \n Container ase-counter-d78e392bf6c9-db-1 Waiting \n Container ase-counter-d78e392bf6c9-frontend-1 Healthy \n Container ase-counter-d78e392bf6c9-db-1 Healthy \n Container ase-counter-d78e392bf6c9-backend-1 Healthy \n"
+  },
+  {
+    "time": "2026-10-10T01:50:58.845Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "ps",
+      "-a"
+    ],
+    "code": 0,
+    "stdout": "NAME                                  IMAGE                               COMMAND                   SERVICE    CREATED          STATUS                   PORTS\nase-counter-d78e392bf6c9-backend-1    ase-counter-d78e392bf6c9-backend    \"docker-entrypoint.s…\"   backend    33 seconds ago   Up 9 seconds (healthy)   127.0.0.1:56542->3000/tcp\nase-counter-d78e392bf6c9-db-1         mysql:8.4                           \"docker-entrypoint.s…\"   db         34 seconds ago   Up 6 seconds (healthy)   3306/tcp, 33060/tcp\nase-counter-d78e392bf6c9-frontend-1   ase-counter-d78e392bf6c9-frontend   \"/docker-entrypoint.…\"   frontend   33 seconds ago   Up 9 seconds             127.0.0.1:56543->80/tcp\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:59.032Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "ps",
+      "-q"
+    ],
+    "code": 0,
+    "stdout": "d7c65107ec679c13735512c7e66606158d15f35afba24e36c566c3086ae20973\n76d23296b23d053a87139b519e6dc867c851224a5f4f5a1265a8f652b811694e\n8cce4620e9357553708857c3c6c7109969ec92cd3ff9adc280912066d9b8a7da\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:59.100Z",
+    "command": "docker",
+    "args": [
+      "inspect",
+      "--format",
+      "{\"id\":{{json .Id}},\"image\":{{json .Config.Image}},\"name\":{{json .Name}},\"state\":{{json .State.Status}},\"health\":{{with index .State \"Health\"}}{{json .Status}}{{else}}null{{end}},\"mounts\":{{json .Mounts}}}",
+      "d7c65107ec679c13735512c7e66606158d15f35afba24e36c566c3086ae20973",
+      "76d23296b23d053a87139b519e6dc867c851224a5f4f5a1265a8f652b811694e",
+      "8cce4620e9357553708857c3c6c7109969ec92cd3ff9adc280912066d9b8a7da"
+    ],
+    "code": 0,
+    "stdout": "{\"id\":\"d7c65107ec679c13735512c7e66606158d15f35afba24e36c566c3086ae20973\",\"image\":\"ase-counter-d78e392bf6c9-backend\",\"name\":\"/ase-counter-d78e392bf6c9-backend-1\",\"state\":\"running\",\"health\":\"healthy\",\"mounts\":[]}\n{\"id\":\"76d23296b23d053a87139b519e6dc867c851224a5f4f5a1265a8f652b811694e\",\"image\":\"mysql:8.4\",\"name\":\"/ase-counter-d78e392bf6c9-db-1\",\"state\":\"running\",\"health\":\"healthy\",\"mounts\":[{\"Destination\":\"/var/lib/mysql\",\"Driver\":\"local\",\"Mode\":\"rw\",\"Name\":\"ase-counter-d78e392bf6c9_mysql_data\",\"Propagation\":\"\",\"RW\":true,\"Source\":\"/var/lib/docker/volumes/ase-counter-d78e392bf6c9_mysql_data/_data\",\"Type\":\"volume\"},{\"Destination\":\"/docker-entrypoint-initdb.d/01-init.sql\",\"Mode\":\"ro\",\"Propagation\":\"rprivate\",\"RW\":false,\"Source\":\"/run/desktop/mnt/host/c/Users/30968/Downloads/integration-acceptance-71144922-fixed/ASE_Assignment-71144922/.git/card-71144922/codearts-source/database/init.sql\",\"Type\":\"bind\"}]}\n{\"id\":\"8cce4620e9357553708857c3c6c7109969ec92cd3ff9adc280912066d9b8a7da\",\"image\":\"ase-counter-d78e392bf6c9-frontend\",\"name\":\"/ase-counter-d78e392bf6c9-frontend-1\",\"state\":\"running\",\"health\":null,\"mounts\":[]}\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:59.224Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "port",
+      "frontend",
+      "80"
+    ],
+    "code": 0,
+    "stdout": "127.0.0.1:56543\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:59.313Z",
+    "http": "http://127.0.0.1:56543/api/counter",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "value": -1
+    }
+  },
+  {
+    "time": "2026-10-10T01:50:59.564Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "exec",
+      "-T",
+      "db",
+      "sh",
+      "-c",
+      "MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql --protocol=TCP -h 127.0.0.1 -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\" --batch --skip-column-names"
+    ],
+    "code": 0,
+    "stdout": "1\t-1\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:59.701Z",
+    "http": "http://127.0.0.1:56543/api/counter/increment",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "value": 0
+    }
+  },
+  {
+    "time": "2026-10-10T01:50:59.926Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "exec",
+      "-T",
+      "db",
+      "sh",
+      "-c",
+      "MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql --protocol=TCP -h 127.0.0.1 -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\" --batch --skip-column-names"
+    ],
+    "code": 0,
+    "stdout": "1\t0\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:50:59.961Z",
+    "http": "http://127.0.0.1:56543/api/counter/increment",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "value": 1
+    }
+  },
+  {
+    "time": "2026-10-10T01:51:00.010Z",
+    "http": "http://127.0.0.1:56543/api/counter/increment",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "value": 2
+    }
+  },
+  {
+    "time": "2026-10-10T01:51:00.077Z",
+    "http": "http://127.0.0.1:56543/api/counter/increment",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "value": 3
+    }
+  },
+  {
+    "time": "2026-10-10T01:51:00.125Z",
+    "http": "http://127.0.0.1:56543/api/counter/increment",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "value": 4
+    }
+  },
+  {
+    "time": "2026-10-10T01:51:00.175Z",
+    "http": "http://127.0.0.1:56543/api/counter/increment",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "value": 5
+    }
+  },
+  {
+    "time": "2026-10-10T01:51:00.248Z",
+    "http": "http://127.0.0.1:56543/api/counter/increment",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "value": 6
+    }
+  },
+  {
+    "time": "2026-10-10T01:51:00.317Z",
+    "http": "http://127.0.0.1:56543/api/counter/increment",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "value": 7
+    }
+  },
+  {
+    "time": "2026-10-10T01:51:00.549Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "exec",
+      "-T",
+      "db",
+      "sh",
+      "-c",
+      "MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql --protocol=TCP -h 127.0.0.1 -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\" --batch --skip-column-names"
+    ],
+    "code": 0,
+    "stdout": "1\t7\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:00.773Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "ps",
+      "-a"
+    ],
+    "code": 0,
+    "stdout": "NAME                                  IMAGE                               COMMAND                   SERVICE    CREATED          STATUS                    PORTS\nase-counter-d78e392bf6c9-backend-1    ase-counter-d78e392bf6c9-backend    \"docker-entrypoint.s…\"   backend    35 seconds ago   Up 11 seconds (healthy)   127.0.0.1:56542->3000/tcp\nase-counter-d78e392bf6c9-db-1         mysql:8.4                           \"docker-entrypoint.s…\"   db         36 seconds ago   Up 8 seconds (healthy)    3306/tcp, 33060/tcp\nase-counter-d78e392bf6c9-frontend-1   ase-counter-d78e392bf6c9-frontend   \"/docker-entrypoint.…\"   frontend   35 seconds ago   Up 11 seconds             127.0.0.1:56543->80/tcp\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:00.945Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "ps",
+      "-q"
+    ],
+    "code": 0,
+    "stdout": "d7c65107ec679c13735512c7e66606158d15f35afba24e36c566c3086ae20973\n76d23296b23d053a87139b519e6dc867c851224a5f4f5a1265a8f652b811694e\n8cce4620e9357553708857c3c6c7109969ec92cd3ff9adc280912066d9b8a7da\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:01.023Z",
+    "command": "docker",
+    "args": [
+      "inspect",
+      "--format",
+      "{\"id\":{{json .Id}},\"image\":{{json .Config.Image}},\"name\":{{json .Name}},\"state\":{{json .State.Status}},\"health\":{{with index .State \"Health\"}}{{json .Status}}{{else}}null{{end}},\"mounts\":{{json .Mounts}}}",
+      "d7c65107ec679c13735512c7e66606158d15f35afba24e36c566c3086ae20973",
+      "76d23296b23d053a87139b519e6dc867c851224a5f4f5a1265a8f652b811694e",
+      "8cce4620e9357553708857c3c6c7109969ec92cd3ff9adc280912066d9b8a7da"
+    ],
+    "code": 0,
+    "stdout": "{\"id\":\"d7c65107ec679c13735512c7e66606158d15f35afba24e36c566c3086ae20973\",\"image\":\"ase-counter-d78e392bf6c9-backend\",\"name\":\"/ase-counter-d78e392bf6c9-backend-1\",\"state\":\"running\",\"health\":\"healthy\",\"mounts\":[]}\n{\"id\":\"76d23296b23d053a87139b519e6dc867c851224a5f4f5a1265a8f652b811694e\",\"image\":\"mysql:8.4\",\"name\":\"/ase-counter-d78e392bf6c9-db-1\",\"state\":\"running\",\"health\":\"healthy\",\"mounts\":[{\"Destination\":\"/var/lib/mysql\",\"Driver\":\"local\",\"Mode\":\"rw\",\"Name\":\"ase-counter-d78e392bf6c9_mysql_data\",\"Propagation\":\"\",\"RW\":true,\"Source\":\"/var/lib/docker/volumes/ase-counter-d78e392bf6c9_mysql_data/_data\",\"Type\":\"volume\"},{\"Destination\":\"/docker-entrypoint-initdb.d/01-init.sql\",\"Mode\":\"ro\",\"Propagation\":\"rprivate\",\"RW\":false,\"Source\":\"/run/desktop/mnt/host/c/Users/30968/Downloads/integration-acceptance-71144922-fixed/ASE_Assignment-71144922/.git/card-71144922/codearts-source/database/init.sql\",\"Type\":\"bind\"}]}\n{\"id\":\"8cce4620e9357553708857c3c6c7109969ec92cd3ff9adc280912066d9b8a7da\",\"image\":\"ase-counter-d78e392bf6c9-frontend\",\"name\":\"/ase-counter-d78e392bf6c9-frontend-1\",\"state\":\"running\",\"health\":null,\"mounts\":[]}\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:03.154Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "down"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": " Container ase-counter-d78e392bf6c9-frontend-1 Stopping \n Container ase-counter-d78e392bf6c9-frontend-1 Stopped \n Container ase-counter-d78e392bf6c9-frontend-1 Removing \n Container ase-counter-d78e392bf6c9-frontend-1 Removed \n Container ase-counter-d78e392bf6c9-backend-1 Stopping \n Container ase-counter-d78e392bf6c9-backend-1 Stopped \n Container ase-counter-d78e392bf6c9-backend-1 Removing \n Container ase-counter-d78e392bf6c9-backend-1 Removed \n Container ase-counter-d78e392bf6c9-db-1 Stopping \n Container ase-counter-d78e392bf6c9-db-1 Stopped \n Container ase-counter-d78e392bf6c9-db-1 Removing \n Container ase-counter-d78e392bf6c9-db-1 Removed \n Network ase-counter-d78e392bf6c9_default Removing \n Network ase-counter-d78e392bf6c9_default Removed \n"
+  },
+  {
+    "time": "2026-10-10T01:51:03.296Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "ps",
+      "-a",
+      "-q"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:03.434Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "ps",
+      "-a"
+    ],
+    "code": 0,
+    "stdout": "NAME      IMAGE     COMMAND   SERVICE   CREATED   STATUS    PORTS\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:03.488Z",
+    "command": "docker",
+    "args": [
+      "volume",
+      "inspect",
+      "ase-counter-d78e392bf6c9_mysql_data"
+    ],
+    "code": 0,
+    "stdout": "[\n    {\n        \"CreatedAt\": \"2026-10-10T01:50:24Z\",\n        \"Driver\": \"local\",\n        \"Labels\": {\n            \"com.docker.compose.config-hash\": \"11d8623612067b538dc3b98ae9d36bad6ff29a263f69cf25a6e2454b786b860c\",\n            \"com.docker.compose.project\": \"ase-counter-d78e392bf6c9\",\n            \"com.docker.compose.version\": \"5.3.1\",\n            \"com.docker.compose.volume\": \"mysql_data\"\n        },\n        \"Mountpoint\": \"/var/lib/docker/volumes/ase-counter-d78e392bf6c9_mysql_data/_data\",\n        \"Name\": \"ase-counter-d78e392bf6c9_mysql_data\",\n        \"Options\": null,\n        \"Scope\": \"local\"\n    }\n]\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:16.817Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "up",
+      "-d",
+      "--build",
+      "--wait",
+      "--wait-timeout",
+      "180"
+    ],
+    "code": 0,
+    "stdout": "#1 [internal] load local bake definitions\n#1 reading from stdin 1.45kB 0.0s done\n#1 DONE 0.0s\n\n#2 [backend internal] load build definition from Dockerfile\n#2 transferring dockerfile: 253B done\n#2 DONE 0.0s\n\n#3 [frontend internal] load build definition from Dockerfile\n#3 transferring dockerfile: 302B done\n#3 DONE 0.0s\n\n#4 [frontend internal] load metadata for docker.io/library/node:24-alpine\n#4 DONE 0.0s\n\n#5 [frontend internal] load metadata for docker.io/library/nginx:1.28-alpine\n#5 DONE 0.0s\n\n#6 [backend internal] load .dockerignore\n#6 transferring context: 98B done\n#6 DONE 0.0s\n\n#7 [frontend internal] load .dockerignore\n#7 transferring context: 114B done\n#7 DONE 0.0s\n\n#8 [backend internal] load build context\n#8 transferring context: 270B done\n#8 DONE 0.0s\n\n#9 [frontend 1/5] FROM docker.io/library/node:24-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1\n#9 resolve docker.io/library/node:24-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1 0.0s done\n#9 DONE 0.0s\n\n#10 [frontend internal] load build context\n#10 transferring context: 377B done\n#10 DONE 0.0s\n\n#11 [frontend stage-1 1/3] FROM docker.io/library/nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236\n#11 resolve docker.io/library/nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236 0.0s done\n#11 DONE 0.0s\n\n#12 [backend 3/5] COPY package.json package-lock.json ./\n#12 CACHED\n\n#13 [backend 4/5] RUN npm ci --omit=dev\n#13 CACHED\n\n#14 [backend 5/5] COPY --chown=node:node src ./src\n#14 CACHED\n\n#15 [frontend build 6/6] RUN npm run build\n#15 CACHED\n\n#16 [frontend stage-1 2/3] COPY nginx.conf /etc/nginx/conf.d/default.conf\n#16 CACHED\n\n#17 [frontend 2/5] WORKDIR /app\n#17 CACHED\n\n#18 [frontend build 3/6] COPY package.json package-lock.json ./\n#18 CACHED\n\n#19 [frontend build 4/6] RUN npm ci\n#19 CACHED\n\n#20 [frontend build 5/6] COPY . .\n#20 CACHED\n\n#21 [frontend stage-1 3/3] COPY --from=build /app/dist /usr/share/nginx/html\n#21 CACHED\n\n#22 [backend] exporting to image\n#22 exporting layers done\n#22 exporting manifest sha256:87eee479c89299d348ca07c6a4864d8abbe160af9228172bdfe479fa592638a6 done\n#22 exporting config sha256:df39909d5b784a16860e6c20426b470173ea1086ab2f1ed41583e0e0f1d887b1 done\n#22 exporting attestation manifest sha256:a9f578d733ca853e493c8e1c578d3acb988b10de0cb63114bef10583a184bb67 0.0s done\n#22 exporting manifest list sha256:c1d2f5a28202add70c1a37c1ac30c4526eaadf11abe835782cb569ab7c7cf7e5 0.0s done\n#22 naming to docker.io/library/ase-counter-d78e392bf6c9-backend:latest\n#22 naming to docker.io/library/ase-counter-d78e392bf6c9-backend:latest done\n#22 unpacking to docker.io/library/ase-counter-d78e392bf6c9-backend:latest 0.0s done\n#22 DONE 0.1s\n\n#23 [frontend] exporting to image\n#23 exporting layers done\n#23 exporting manifest sha256:9618d2f3760eab42c031f04c070c099b99b71f770cd2b6b853659268d6eba677 done\n#23 exporting config sha256:3cecf4cb4c0985be2bb4c9b9a1b59de72fcae13271707e7eca16eda805b5d029 done\n#23 exporting attestation manifest sha256:91dec74b426cd0f7bf37bdb65024d61af97cecda4794a1e235d8e4d4739dcd65 0.0s done\n#23 exporting manifest list sha256:fe3ce242cf6ee7af80823aeb720fffb2425f83bea56a09f932dfb33093c727d6 0.0s done\n#23 naming to docker.io/library/ase-counter-d78e392bf6c9-frontend:latest done\n#23 unpacking to docker.io/library/ase-counter-d78e392bf6c9-frontend:latest 0.0s done\n#23 DONE 0.1s\n\n#24 [backend] resolving provenance for metadata file\n#24 DONE 0.0s\n\n#25 [frontend] resolving provenance for metadata file\n#25 DONE 0.0s\n",
+    "stderr": " Image ase-counter-d78e392bf6c9-frontend Building \n Image ase-counter-d78e392bf6c9-backend Building \n Image ase-counter-d78e392bf6c9-backend Built \n Image ase-counter-d78e392bf6c9-frontend Built \n Network ase-counter-d78e392bf6c9_default Creating \n Network ase-counter-d78e392bf6c9_default Created \n Container ase-counter-d78e392bf6c9-db-1 Creating \n Container ase-counter-d78e392bf6c9-db-1 Created \n Container ase-counter-d78e392bf6c9-backend-1 Creating \n Container ase-counter-d78e392bf6c9-backend-1 Created \n Container ase-counter-d78e392bf6c9-frontend-1 Creating \n Container ase-counter-d78e392bf6c9-frontend-1 Created \n Container ase-counter-d78e392bf6c9-db-1 Starting \n Container ase-counter-d78e392bf6c9-db-1 Started \n Container ase-counter-d78e392bf6c9-db-1 Waiting \n Container ase-counter-d78e392bf6c9-db-1 Healthy \n Container ase-counter-d78e392bf6c9-backend-1 Starting \n Container ase-counter-d78e392bf6c9-backend-1 Started \n Container ase-counter-d78e392bf6c9-backend-1 Waiting \n Container ase-counter-d78e392bf6c9-backend-1 Healthy \n Container ase-counter-d78e392bf6c9-frontend-1 Starting \n Container ase-counter-d78e392bf6c9-frontend-1 Started \n Container ase-counter-d78e392bf6c9-db-1 Waiting \n Container ase-counter-d78e392bf6c9-frontend-1 Waiting \n Container ase-counter-d78e392bf6c9-backend-1 Waiting \n Container ase-counter-d78e392bf6c9-backend-1 Healthy \n Container ase-counter-d78e392bf6c9-db-1 Healthy \n Container ase-counter-d78e392bf6c9-frontend-1 Healthy \n"
+  },
+  {
+    "time": "2026-10-10T01:51:16.956Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "port",
+      "frontend",
+      "80"
+    ],
+    "code": 0,
+    "stdout": "127.0.0.1:53885\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:17.122Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "ps",
+      "-a"
+    ],
+    "code": 0,
+    "stdout": "NAME                                  IMAGE                               COMMAND                   SERVICE    CREATED          STATUS                    PORTS\nase-counter-d78e392bf6c9-backend-1    ase-counter-d78e392bf6c9-backend    \"docker-entrypoint.s…\"   backend    13 seconds ago   Up 6 seconds (healthy)    127.0.0.1:62947->3000/tcp\nase-counter-d78e392bf6c9-db-1         mysql:8.4                           \"docker-entrypoint.s…\"   db         13 seconds ago   Up 12 seconds (healthy)   3306/tcp, 33060/tcp\nase-counter-d78e392bf6c9-frontend-1   ase-counter-d78e392bf6c9-frontend   \"/docker-entrypoint.…\"   frontend   13 seconds ago   Up Less than a second     127.0.0.1:53885->80/tcp\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:17.294Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "ps",
+      "-q"
+    ],
+    "code": 0,
+    "stdout": "e65f5b82b7dd572ee68377a02c8d28e3a336851c6b35d539ab99a07f03ef8fda\n26c83d940667c8823d96414e598890396afc9e7d1240fed0609cf744d68273e5\nb87b5f6b6c1833e0c169b2af108ecc5dfe57f236456617ee8741746ac8681721\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:17.359Z",
+    "command": "docker",
+    "args": [
+      "inspect",
+      "--format",
+      "{\"id\":{{json .Id}},\"image\":{{json .Config.Image}},\"name\":{{json .Name}},\"state\":{{json .State.Status}},\"health\":{{with index .State \"Health\"}}{{json .Status}}{{else}}null{{end}},\"mounts\":{{json .Mounts}}}",
+      "e65f5b82b7dd572ee68377a02c8d28e3a336851c6b35d539ab99a07f03ef8fda",
+      "26c83d940667c8823d96414e598890396afc9e7d1240fed0609cf744d68273e5",
+      "b87b5f6b6c1833e0c169b2af108ecc5dfe57f236456617ee8741746ac8681721"
+    ],
+    "code": 0,
+    "stdout": "{\"id\":\"e65f5b82b7dd572ee68377a02c8d28e3a336851c6b35d539ab99a07f03ef8fda\",\"image\":\"ase-counter-d78e392bf6c9-backend\",\"name\":\"/ase-counter-d78e392bf6c9-backend-1\",\"state\":\"running\",\"health\":\"healthy\",\"mounts\":[]}\n{\"id\":\"26c83d940667c8823d96414e598890396afc9e7d1240fed0609cf744d68273e5\",\"image\":\"mysql:8.4\",\"name\":\"/ase-counter-d78e392bf6c9-db-1\",\"state\":\"running\",\"health\":\"healthy\",\"mounts\":[{\"Destination\":\"/var/lib/mysql\",\"Driver\":\"local\",\"Mode\":\"rw\",\"Name\":\"ase-counter-d78e392bf6c9_mysql_data\",\"Propagation\":\"\",\"RW\":true,\"Source\":\"/var/lib/docker/volumes/ase-counter-d78e392bf6c9_mysql_data/_data\",\"Type\":\"volume\"},{\"Destination\":\"/docker-entrypoint-initdb.d/01-init.sql\",\"Mode\":\"ro\",\"Propagation\":\"rprivate\",\"RW\":false,\"Source\":\"/run/desktop/mnt/host/c/Users/30968/Downloads/integration-acceptance-71144922-fixed/ASE_Assignment-71144922/.git/card-71144922/codearts-source/database/init.sql\",\"Type\":\"bind\"}]}\n{\"id\":\"b87b5f6b6c1833e0c169b2af108ecc5dfe57f236456617ee8741746ac8681721\",\"image\":\"ase-counter-d78e392bf6c9-frontend\",\"name\":\"/ase-counter-d78e392bf6c9-frontend-1\",\"state\":\"running\",\"health\":null,\"mounts\":[]}\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:17.496Z",
+    "http": "http://127.0.0.1:53885/api/counter",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "value": 7
+    }
+  },
+  {
+    "time": "2026-10-10T01:51:17.747Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "exec",
+      "-T",
+      "db",
+      "sh",
+      "-c",
+      "MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql --protocol=TCP -h 127.0.0.1 -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\" --batch --skip-column-names"
+    ],
+    "code": 0,
+    "stdout": "1\t7\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:17.847Z",
+    "http": "http://127.0.0.1:53885/api/counter/decrement",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "value": 6
+    }
+  },
+  {
+    "time": "2026-10-10T01:51:17.878Z",
+    "http": "http://127.0.0.1:53885/api/counter",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "value": 6
+    }
+  },
+  {
+    "time": "2026-10-10T01:51:18.104Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "exec",
+      "-T",
+      "db",
+      "sh",
+      "-c",
+      "MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql --protocol=TCP -h 127.0.0.1 -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\" --batch --skip-column-names"
+    ],
+    "code": 0,
+    "stdout": "1\t6\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:21.542Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "stop",
+      "db"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": " Container ase-counter-d78e392bf6c9-db-1 Stopping \n Container ase-counter-d78e392bf6c9-db-1 Stopped \n"
+  },
+  {
+    "time": "2026-10-10T01:51:31.940Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "up",
+      "-d",
+      "--wait",
+      "--wait-timeout",
+      "120",
+      "db"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": " Container ase-counter-d78e392bf6c9-db-1 Starting \n Container ase-counter-d78e392bf6c9-db-1 Started \n Container ase-counter-d78e392bf6c9-db-1 Waiting \n Container ase-counter-d78e392bf6c9-db-1 Healthy \n"
+  },
+  {
+    "time": "2026-10-10T01:51:31.977Z",
+    "http": "http://127.0.0.1:53885/api/counter",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "value": 6
+    }
+  },
+  {
+    "time": "2026-10-10T01:51:32.196Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "exec",
+      "-T",
+      "db",
+      "sh",
+      "-c",
+      "MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql --protocol=TCP -h 127.0.0.1 -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\" --batch --skip-column-names"
+    ],
+    "code": 0,
+    "stdout": "1\t6\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:35.971Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "stop",
+      "db"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": " Container ase-counter-d78e392bf6c9-db-1 Stopping \n Container ase-counter-d78e392bf6c9-db-1 Stopped \n"
+  },
+  {
+    "time": "2026-10-10T01:51:44.288Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "up",
+      "-d",
+      "--wait",
+      "--wait-timeout",
+      "120",
+      "db"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": " Container ase-counter-d78e392bf6c9-db-1 Starting \n Container ase-counter-d78e392bf6c9-db-1 Started \n Container ase-counter-d78e392bf6c9-db-1 Waiting \n Container ase-counter-d78e392bf6c9-db-1 Healthy \n"
+  },
+  {
+    "time": "2026-10-10T01:51:44.321Z",
+    "http": "http://127.0.0.1:53885/api/counter",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "value": 6
+    }
+  },
+  {
+    "time": "2026-10-10T01:51:44.563Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "exec",
+      "-T",
+      "db",
+      "sh",
+      "-c",
+      "MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql --protocol=TCP -h 127.0.0.1 -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\" --batch --skip-column-names"
+    ],
+    "code": 0,
+    "stdout": "1\t6\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:44.788Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "exec",
+      "-T",
+      "db",
+      "sh",
+      "-c",
+      "MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql --protocol=TCP -h 127.0.0.1 -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\" --batch --skip-column-names"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:45.002Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "exec",
+      "-T",
+      "db",
+      "sh",
+      "-c",
+      "MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql --protocol=TCP -h 127.0.0.1 -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\" --batch --skip-column-names"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:45.238Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "exec",
+      "-T",
+      "db",
+      "sh",
+      "-c",
+      "MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql --protocol=TCP -h 127.0.0.1 -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\" --batch --skip-column-names"
+    ],
+    "code": 0,
+    "stdout": "1\t6\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:45.446Z",
+    "http": "http://127.0.0.1:53885/api/counter",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "value": 16
+    }
+  },
+  {
+    "time": "2026-10-10T01:51:45.675Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "exec",
+      "-T",
+      "db",
+      "sh",
+      "-c",
+      "MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql --protocol=TCP -h 127.0.0.1 -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\" --batch --skip-column-names"
+    ],
+    "code": 0,
+    "stdout": "1\t16\n",
+    "stderr": ""
+  },
+  {
+    "time": "2026-10-10T01:51:48.737Z",
+    "command": "docker",
+    "args": [
+      "compose",
+      "-p",
+      "ase-counter-d78e392bf6c9",
+      "--env-file",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\empty.env",
+      "-f",
+      "C:\\Users\\30968\\Downloads\\integration-acceptance-71144922-fixed\\ASE_Assignment-71144922\\.git\\card-71144922\\codearts-source\\compose.yaml",
+      "-f",
+      "C:\\Users\\30968\\AppData\\Local\\Temp\\ase-counter-tamioo\\override.yaml",
+      "down",
+      "--remove-orphans",
+      "--rmi",
+      "local"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": " Container ase-counter-d78e392bf6c9-frontend-1 Stopping \n Container ase-counter-d78e392bf6c9-frontend-1 Stopped \n Container ase-counter-d78e392bf6c9-frontend-1 Removing \n Container ase-counter-d78e392bf6c9-frontend-1 Removed \n Container ase-counter-d78e392bf6c9-backend-1 Stopping \n Container ase-counter-d78e392bf6c9-backend-1 Stopped \n Container ase-counter-d78e392bf6c9-backend-1 Removing \n Container ase-counter-d78e392bf6c9-backend-1 Removed \n Container ase-counter-d78e392bf6c9-db-1 Stopping \n Container ase-counter-d78e392bf6c9-db-1 Stopped \n Container ase-counter-d78e392bf6c9-db-1 Removing \n Container ase-counter-d78e392bf6c9-db-1 Removed \n Image ase-counter-d78e392bf6c9-frontend:latest Removing \n Image ase-counter-d78e392bf6c9-backend:latest Removing \n Network ase-counter-d78e392bf6c9_default Removing \n Image ase-counter-d78e392bf6c9-frontend:latest Removed \n Image ase-counter-d78e392bf6c9-backend:latest Removed \n Network ase-counter-d78e392bf6c9_default Removed \n"
+  }
+]
